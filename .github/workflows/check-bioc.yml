@@ -191,6 +191,8 @@ jobs:
           ## https://github.com/r-lib/remotes/issues/296
           ## Ideally, all dependencies should get installed in the first pass.
 
+          ## Manually install igraph
+          install.packages("igraph", repos = c(CRAN = "https://cran.rstudio.com"))
           BiocManager::install("pcaExplorer")
 
           ## Pass #1 at installing dependencies
@@ -414,6 +416,8 @@ jobs:
           ## https://github.com/r-lib/remotes/issues/296
           ## Ideally, all dependencies should get installed in the first pass.
 
+          ## Manually install igraph
+          install.packages("igraph", repos = c(CRAN = "https://cran.rstudio.com"))
           BiocManager::install("pcaExplorer")
 
           ## Pass #1 at installing dependencies
