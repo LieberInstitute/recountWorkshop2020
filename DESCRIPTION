@@ -51,4 +51,4 @@ Suggests:
     covr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
-DockerImage: lcolladotor/recountworkshop2020:latest
+DockerImage: lcollado/recountworkshop2020:latest
