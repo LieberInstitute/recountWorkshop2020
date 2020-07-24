@@ -22,14 +22,14 @@ vignette: >
   %\VignetteIndexEntry{Using the recount2 resource and related tools}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding[utf8]{inputenc}
-bibliography: "`r system.file(package='recountWorkshop2019', 'vignettes', 'recount-workshop.bib')`"
+bibliography: "`r system.file(package='recountWorkshop2020', 'vignettes', 'recount-workshop.bib')`"
 output: 
   bookdown::html_document2:
     highlight: pygments
     toc: true
     toc_depth: 3
     fig_width: 5
-csl: "`r system.file(package='recountWorkshop2019', 'vignettes', 'f1000-research.csl')`"
+csl: "`r system.file(package='recountWorkshop2020', 'vignettes', 'f1000-research.csl')`"
 ---
 
 # Using the recount2 resource and related tools
@@ -50,7 +50,7 @@ The recount2 resource provides expression data summarized at different feature l
 
 ```{r Figure1, out.width="100%", fig.align="center", fig.cap = "Overview of the data available in recount2. Reads (pink boxes) aligned to the reference genome can be used to compute a base-pair coverage curve and identify exon-exon junctions (split reads). Gene and exon count matrices are generated using annotation information providing the gene (green boxes) and exon (blue boxes) coordinates together with the base-level coverage curve. The reads spanning exon-exon junctions (jx) are used to compute a third count matrix that might include un-annotated junctions (jx 3 and 4). Without using annotation information, expressed regions (orange box) can be determined from the base-level coverage curve to then construct data-driven count matrices.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure1.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure1.png')
 )
 ```
 
@@ -58,7 +58,7 @@ recount2 provides gene, exon, and exon-exon junction count matrices both in text
 
 ```{r Figure2, out.width="100%", fig.align="center", fig.cap = "recount2 provides coverage count matrices in RangedSummarizedExperiment (rse) objects. Once the rse object has been downloaded and loaded into R, the feature information is accessed with rowRanges(rse) (blue box), the counts with assays(rse)\\$counts (pink box) and the sample metadata with colData(rse) (green box). The sample metadata can be expanded using add\\_predictions(rse) (orange box) or with custom code (brown box) matching by a unique sample identifier such as the SRA Run id. The rse object is inside the purple box and matching data is highlighted in each box.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure2.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure2.png')
 )
 ```
 
@@ -101,7 +101,7 @@ The most accessible features are the gene, exon and exon-exon junction count mat
 
 ```{r Figure3, out.width="100%", fig.align="center", fig.cap = "RNA-seq starting data. 16 RNA-seq un-aligned RNA-seq reads 3 base-pairs long are shown (pink boxes) along a reference genome 16 base-pairs long (white box).", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure3.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure3.png')
 )
 ```
 
@@ -109,7 +109,7 @@ Reads in the recount2 resource were aligned with Rail-RNA aligner [@rail-rna] wh
 
 ```{r Figure4, out.width="100%", fig.align="center", fig.cap = "Aligned RNA-seq reads. Spice-aware RNA-seq aligners such as Rail-RNA are able to find the coordinates to which the reads map, even if they span exon-exon junctions (connected boxes). Rail-RNA soft clips some reads (purple boxes with rough edges) such that a portion of these reads align to the reference genome.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure4.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure4.png')
 )
 ```
 
@@ -117,7 +117,7 @@ In order to compute the gene and exon count matrices we first have to process th
 
 ```{r Figure5, out.width="100%", fig.align="center", fig.cap = "Gene annotation. A single gene with two isoforms composed by three distinct exons (blue boxes) is illustrated. Exons 1 and 3 share the first five base-pairs while exon 2 is common to both isoforms.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure5.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure5.png')
 )
 ```
 
@@ -133,7 +133,7 @@ disjoin(exons)
 
 ```{r Figure6, out.width="100%", fig.align="center", fig.cap = "Disjoint exons. Windows of distinct exonic sequence for the example gene. Disjoint exons 1 and 2 form exon 1.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure6.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure6.png')
 )
 ```
 
@@ -141,7 +141,7 @@ Now that we have disjoint exons, we can compute the base-pair coverage for each 
 
 ```{r Figure7, out.width="100%", fig.align="center", fig.cap = "Base-pair coverage counting for exonic base-pairs. At each exonic base-pair we compute the number of reads overlapping that given base-pair. The first base (orange arrow) has 3 reads overlapping that base-pair. Base-pair 11 has a coverage of 3 but does not overlap known exonic sequence, so that information is not used for the gene and exon count matrices (grey arrow). If a read partially overlaps exonic sequence, only the portion that overlaps is used in the computation (see right most read).", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure7.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure7.png')
 )
 ```
 
@@ -149,7 +149,7 @@ With base-pair coverage for the exonic sequences computed, the coverage count fo
 
 ```{r Figure8, out.width="100%", fig.align="center", fig.cap = "Exon and gene coverage counts. The coverage counts for each disjoint exon are the sum of the base-pair coverage. The gene coverage count is the sum of the disjoint exons coverage counts.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure8.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure8.png')
 )
 ```
 
@@ -207,7 +207,7 @@ dev.off()
 
 ```{r Figure9, out.width="100%", fig.align="center", fig.cap = "Area under coverage (AUC). The area under coverage is the sum of the base-pair coverage for all positions in the genome regardless of the annotation. It is the area under the base-level coverage curve shown as the light blue area under the pink curve.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure9.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure9.png')
 )
 ```
 
@@ -227,7 +227,7 @@ Data in recount2 can be used for annotation-agnostic analyses and enriching the 
 
 ```{r Figure10, out.width="100%", fig.align="center", fig.cap = "Exon-exon junctions go beyond the annotation. Reads spanning exon-exon junctions are highlighted and compared against the annotation. Three of them match the annotated junctions, but one (blue and orange read) spans an un-annotated exon-exon junction with the left end matching the annotation and the right end hinting at a possible new isoform for this gene (blue and orange isoform).", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure10.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure10.png')
 )
 ```
 
@@ -235,13 +235,13 @@ The base-pair coverage data from recount2 can be used together with `derfinder` 
 
 ```{r Figure11, out.width="100%", fig.align="center", fig.cap = "Intron retention events. Some reads might align with known intronic segments of the genome and provide information for exploring intron retention events (pink read). Some might support an intron retention event or a new isoform when coupled with exon-exon junction data (orange read).", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure11.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure11.png')
 )
 ```
 
 ```{r Figure12, out.width="100%", fig.align="center", fig.cap = "Exon boundaries. Reads that go beyond the known exon boundaries can inform us of whether the annotated boundaries are correct or if there was a run-off transcription event.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure12.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure12.png')
 )
 ```
 
@@ -250,18 +250,18 @@ knitr::include_graphics(
 
 Having reviewed how the coverage counts in recount2 were produced, we can now do a differential expression analysis. We will use data from [GSE67333](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE67333) [@magistri2015] whose overall design was: _We performed directional RNA sequencing on high quality RNA samples extracted from hippocampi of 4 late onset Alzheimer's disease (LOAD) and 4 age-matched controls._ The function `download_study()` requires a SRA accession id which can be found using `abstract_search()`. `download_study()` can then be used to download the gene coverage count data as well as other expression features. The files are saved in a directory named after the SRA accession id, in this case SRP056604.
 
-To facilitate this workshop, we included the data in the `recountWorkshop2019` package. It can be located with the `system.file()` function as shown below.
+To facilitate this workshop, we included the data in the `recountWorkshop2020` package. It can be located with the `system.file()` function as shown below.
 
 ```{r "localPath"}
 ## Locate path with the data
-library("recountWorkshop2019")
-local_path <- system.file("extdata", "SRP056604", package = "recountWorkshop2019")
+library("recountWorkshop2020")
+local_path <- system.file("extdata", "SRP056604", package = "recountWorkshop2020")
 dir(local_path)
 ```
 
 ```{r "testing locally", echo = FALSE, eval = FALSE}
 ## For testing
-local_path <- "/Users/lcollado/Dropbox/Code/recountWorkshop2019/inst/extdata/SRP056604"
+local_path <- "/Users/lcollado/Dropbox/Code/recountWorkshop2020/inst/extdata/SRP056604"
 ```
 
 
@@ -481,7 +481,7 @@ table(colData(rse_gene)$sra_gender, colData(rse_gene)$sex)
 
 ```{r Figure13, out.width="100%", fig.align="center", fig.cap = "Example variables (blue column) and values of the data present in recount-brain.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure-1.png')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure-1.png')
 )
 ```
 
@@ -489,7 +489,7 @@ To facilitate analyses of brain studies we further curated 62 SRA projects and m
 
 ```{r Figure14, out.width="100%", fig.align="center", fig.cap = "Uses of recount-brain and its relationship with recount2 . recount-brain facilitates identifying project(s) of interest (purple box) programmatically or interactively through https://jhubiostatistics.shinyapps.io/recount-brain/ . After downloading expression data from recount2 , recount-brain can enrich the sample metadata for brain studies. This information can be used to perform analyses to find differentially expressed genes and enriched gene sets such as those exemplified with SRA Study SRP027383 (Bao et al., 2014) , where the top differentially expressed gene among glioblastoma samples in recount2 is SCM4 . Black boxes represent R code with functions highlighted in blue, input arguments in green, and R objects in white.", echo = FALSE}
 knitr::include_graphics(
-  system.file(package='recountWorkshop2019', 'vignettes', 'Figure2.jpg')
+  system.file(package='recountWorkshop2020', 'vignettes', 'Figure2.jpg')
 )
 ```
 
@@ -779,7 +779,7 @@ names(bw_files) <- gsub('.bw', '', basename(bw_files))
 ## Make sure that they are as small as possible for the workshop
 fullCov <- derfinder::fullCoverage(bw_files, chrs = 'chr12')
 derfinder::createBw(fullCov,
-    path = '~/Dropbox/code/recountWorkshop2019/inst/extdata/SRP056604/bw')
+    path = '~/Dropbox/code/recountWorkshop2020/inst/extdata/SRP056604/bw')
 
 ## Turns out that I had already done this in 2017 :P
 ```
@@ -910,10 +910,10 @@ gencode_v25_hg38 <- rtracklayer::import(paste0(
 gencode_v25_hg38 <- keepSeqlevels(gencode_v25_hg38, "chr12",
     pruning.mode = "coarse")
 rtracklayer::export.gff(gencode_v25_hg38,
-    con = '~/Dropbox/code/recountWorkshop2019/inst/extdata/gencode.v25.annotation.chr12.gtf',
+    con = '~/Dropbox/code/recountWorkshop2020/inst/extdata/gencode.v25.annotation.chr12.gtf',
     format = 'gtf'
 )
-R.utils::gzip('~/Dropbox/code/recountWorkshop2019/inst/extdata/gencode.v25.annotation.chr12.gtf')
+R.utils::gzip('~/Dropbox/code/recountWorkshop2020/inst/extdata/gencode.v25.annotation.chr12.gtf')
 ```
 
 
@@ -923,7 +923,7 @@ library("rtracklayer")
 
 ## Check if the file exists locally (already subsetted to chr12)
 gtf_file <- system.file("extdata", "gencode.v25.annotation.chr12.gtf.gz",
-    package = "recountWorkshop2019")
+    package = "recountWorkshop2020")
 
 ## If the file doesn't exist, use the data from the web
 gtf_file <- ifelse(file.exists(gtf_file), gtf_file, paste0(
