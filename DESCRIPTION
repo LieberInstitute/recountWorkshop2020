@@ -1,0 +1,53 @@
+Package: recountWorkshop2020
+Title: Human RNA-seq data from recount2 and related packages
+Version: 0.99.0
+Date: 2020-07-24
+Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
+    email = "lcolladotor@gmail.com",
+    comment = c(ORCID = "0000-0003-2140-308X"),
+    person("Abhinav", "Nellore", role = "ctb",
+    email = "anellore@gmail.com"), person(c("Andrew", "E."), "Jaffe",
+    role = "ctb", email = "andrew.jaffe@libd.org"))
+Description: The recount2 project re-processed RNA sequencing (RNA-seq) data on
+    over 70,000 human RNA-seq samples spanning a variety of tissues, cell types
+    and disease conditions. Researchers can easily access these data via the
+    recount Bioconductor package, and can quickly import gene, exon, exon-exon
+    junction and base-pair coverage data for uniformly processed data from the
+    SRA, GTEx and TCGA projects in R for analysis. This workshop will include an
+    overview of the recount2 project as well as methods and tools that have been
+    to improve it since 2017. The overview will be followed by a hands-on
+    session where you will dive into recount and related packages along the
+    lines of the recount workflow.
+License: Artistic-2.0
+URL: https://github.com//LieberInstitute/recountWorkshop2020
+BugReports: 
+    https://support.bioconductor.org/t/recountWorkshop2020
+Depends: R (>= 4.0.0)
+Encoding: UTF-8
+LazyData: true
+biocViews: Workshop, Coverage, DifferentialExpression, GeneExpression,
+    RNASeq, Sequencing, DataImport
+VignetteBuilder: knitr
+Imports:
+    recount (>= 1.10.1),
+    GenomicRanges,
+    ideal,
+    DESeq2,
+    regionReport,
+    clusterProfiler,
+    org.Hs.eg.db,
+    gplots,
+    derfinder,
+    rtracklayer,
+    GenomicFeatures,
+    bumphunter,
+    derfinderPlot,
+    sessioninfo
+Suggests:
+    bookdown,
+    knitr,
+    rmarkdown,
+    testthat,
+    covr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
