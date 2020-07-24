@@ -1,7 +1,6 @@
 pandoc: 2.7.3
-pkgdown: 1.5.1
-pkgdown_sha: ~
-articles:
-  recount-workshop: recount-workshop.html
-last_built: 2020-07-24T05:45Z
+pkgdown: 1.5.1.9000
+pkgdown_sha: eae56f08694abebf93cdfc0dd8e9ede06d8c815f
+articles: []
+last_built: 2020-07-24T21:26Z
 
