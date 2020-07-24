@@ -947,7 +947,7 @@ chrInfo$isCircular <- FALSE
 
 ## Assign the chromosome information to the object we will use to
 ## create the txdb object
-si <- with(chrInfo, Seqinfo(as.character(chrom), length, isCircular,
+si <- with(chrInfo, Seqinfo(as.character(chrom), size, isCircular,
     genome = "hg38"))
 seqinfo(gencode_v25_hg38) <- si
 
