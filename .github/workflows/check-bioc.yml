@@ -305,19 +305,6 @@ jobs:
           tag_with_sha: true
           tags: latest
 
-      # deploy needs rsync? Seems so.
-      - name: Install deploy dependencies
-        run: |
-          apt-get update
-          apt-get -y install rsync
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: docs # The folder the action should deploy.
-
   ## Run R CMD check on both macOS and Windows. You can also run the
   ## tests on Linux outside of the Bioconductor docker environment. If you
   ## do so, you might have to install system dependencies on Linux
