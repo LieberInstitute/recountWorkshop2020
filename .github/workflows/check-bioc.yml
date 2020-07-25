@@ -381,6 +381,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           ## Edit below if you have any Windows system dependencies
+          install.packages("XML", type = "binary")
         shell: Rscript {0}
 
       - name: Install BiocManager
