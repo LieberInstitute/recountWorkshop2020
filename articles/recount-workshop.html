@@ -395,7 +395,7 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <span class="co">## of reads Rail-RNA downloaded</span>
 <span class="kw">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/all_metadata.html">all_metadata</a></span>()
 </pre></div>
-<pre><code>## 2020-07-24 21:26:42 downloading the metadata to /tmp/RtmpCYWa6l/metadata_clean_sra.Rdata</code></pre>
+<pre><code>## 2020-07-25 05:24:51 downloading the metadata to /tmp/RtmpVbaQk3/metadata_clean_sra.Rdata</code></pre>
 <div class="sourceCode" id="cb26"><pre class="downlit">
 <span class="kw">meta</span>[<span class="kw">meta</span><span class="op">$</span><span class="kw">run</span> <span class="op">==</span> <span class="st">'SRR2071341'</span>,
     <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"read_count_as_reported_by_sra"</span>, <span class="st">"reads_downloaded"</span>)]
@@ -561,7 +561,7 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <span class="co">## Add the predictions</span>
 <span class="kw">rse_gene</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_predictions.html">add_predictions</a></span>(<span class="kw">rse_gene</span>)
 </pre></div>
-<pre><code>## 2020-07-24 21:26:45 downloading the predictions to /tmp/RtmpCYWa6l/PredictedPhenotypes_v0.0.06.rda</code></pre>
+<pre><code>## 2020-07-25 05:24:55 downloading the predictions to /tmp/RtmpVbaQk3/PredictedPhenotypes_v0.0.06.rda</code></pre>
 <pre><code>## Loading objects:
 ##   PredictedPhenotypes</code></pre>
 <div class="sourceCode" id="cb64"><pre class="downlit">
@@ -781,7 +781,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="co">## Don't specify the rse argument to download the full recount_brain table</span>
 <span class="kw">recount_brain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata</a></span>(source = <span class="st">'recount_brain_v2'</span>)
 </pre></div>
-<pre><code>## 2020-07-24 21:26:47 downloading the recount_brain metadata to /tmp/RtmpCYWa6l/recount_brain_v2.Rdata</code></pre>
+<pre><code>## 2020-07-25 05:24:56 downloading the recount_brain metadata to /tmp/RtmpVbaQk3/recount_brain_v2.Rdata</code></pre>
 <pre><code>## Loading objects:
 ##   recount_brain</code></pre>
 <div class="sourceCode" id="cb90"><pre class="downlit">
@@ -819,10 +819,10 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <div class="sourceCode" id="cb96"><pre class="downlit">
 <span class="kw">rse_gene</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata</a></span>(<span class="kw">rse_gene</span>, source = <span class="st">'recount_brain_v2'</span>)
 </pre></div>
-<pre><code>## 2020-07-24 21:26:48 downloading the recount_brain metadata to /tmp/RtmpCYWa6l/recount_brain_v2.Rdata</code></pre>
+<pre><code>## 2020-07-25 05:24:57 downloading the recount_brain metadata to /tmp/RtmpVbaQk3/recount_brain_v2.Rdata</code></pre>
 <pre><code>## Loading objects:
 ##   recount_brain</code></pre>
-<pre><code>## 2020-07-24 21:26:48 found 8 out of 8 samples in the recount_brain metadata</code></pre>
+<pre><code>## 2020-07-25 05:24:57 found 8 out of 8 samples in the recount_brain metadata</code></pre>
 <div class="sourceCode" id="cb100"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>))
 </pre></div>
@@ -1179,14 +1179,14 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="kw">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/expressed_regions.html">expressed_regions</a></span>(<span class="st">"SRP056604"</span>, <span class="st">"chr12"</span>, cutoff = <span class="fl">5L</span>,
     maxClusterGap = <span class="fl">3000L</span>, outdir = <span class="kw">local_path</span>)
 </pre></div>
-<pre><code>## 2020-07-24 21:31:18 loadCoverage: loading BigWig file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/mean_SRP056604.bw</code></pre>
-<pre><code>## 2020-07-24 21:31:30 loadCoverage: applying the cutoff to the merged data</code></pre>
-<pre><code>## 2020-07-24 21:32:16 filterData: originally there were 133275309 rows, now there are 133275309 rows. Meaning that 0 percent was filtered.</code></pre>
-<pre><code>## 2020-07-24 21:32:16 findRegions: identifying potential segments</code></pre>
-<pre><code>## 2020-07-24 21:32:16 findRegions: segmenting information</code></pre>
-<pre><code>## 2020-07-24 21:32:16 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
-<pre><code>## 2020-07-24 21:32:21 findRegions: identifying candidate regions</code></pre>
-<pre><code>## 2020-07-24 21:32:22 findRegions: identifying region clusters</code></pre>
+<pre><code>## 2020-07-25 05:28:51 loadCoverage: loading BigWig file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/mean_SRP056604.bw</code></pre>
+<pre><code>## 2020-07-25 05:29:02 loadCoverage: applying the cutoff to the merged data</code></pre>
+<pre><code>## 2020-07-25 05:29:42 filterData: originally there were 133275309 rows, now there are 133275309 rows. Meaning that 0 percent was filtered.</code></pre>
+<pre><code>## 2020-07-25 05:29:42 findRegions: identifying potential segments</code></pre>
+<pre><code>## 2020-07-25 05:29:42 findRegions: segmenting information</code></pre>
+<pre><code>## 2020-07-25 05:29:42 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
+<pre><code>## 2020-07-25 05:29:46 findRegions: identifying candidate regions</code></pre>
+<pre><code>## 2020-07-25 05:29:48 findRegions: identifying region clusters</code></pre>
 <div class="sourceCode" id="cb172"><pre class="downlit">
 <span class="co">## Explore the resulting expressed regions</span>
 <span class="kw">regions</span>
@@ -1245,18 +1245,18 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span>(<span class="kw">rse_er</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/coverage_matrix.html">coverage_matrix</a></span>(<span class="st">"SRP056604"</span>, <span class="st">"chr12"</span>, <span class="kw">regions</span>,
     chunksize = <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">regions</span>), outdir = <span class="kw">local_path</span>, round = <span class="fl">TRUE</span>))
 </pre></div>
-<pre><code>## 2020-07-24 21:32:31 downloading file SRP056604.tsv to /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604</code></pre>
-<pre><code>## 2020-07-24 21:32:32 railMatrix: processing regions 1 to 22950</code></pre>
-<pre><code>## 2020-07-24 21:32:32 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931819.bw</code></pre>
-<pre><code>## 2020-07-24 21:32:35 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931818.bw</code></pre>
-<pre><code>## 2020-07-24 21:32:39 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931817.bw</code></pre>
-<pre><code>## 2020-07-24 21:32:42 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931816.bw</code></pre>
-<pre><code>## 2020-07-24 21:32:45 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931815.bw</code></pre>
-<pre><code>## 2020-07-24 21:32:48 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931814.bw</code></pre>
-<pre><code>## 2020-07-24 21:32:52 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931813.bw</code></pre>
-<pre><code>## 2020-07-24 21:32:55 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931812.bw</code></pre>
+<pre><code>## 2020-07-25 05:29:56 downloading file SRP056604.tsv to /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604</code></pre>
+<pre><code>## 2020-07-25 05:29:56 railMatrix: processing regions 1 to 22950</code></pre>
+<pre><code>## 2020-07-25 05:29:56 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931819.bw</code></pre>
+<pre><code>## 2020-07-25 05:30:00 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931818.bw</code></pre>
+<pre><code>## 2020-07-25 05:30:03 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931817.bw</code></pre>
+<pre><code>## 2020-07-25 05:30:06 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931816.bw</code></pre>
+<pre><code>## 2020-07-25 05:30:08 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931815.bw</code></pre>
+<pre><code>## 2020-07-25 05:30:12 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931814.bw</code></pre>
+<pre><code>## 2020-07-25 05:30:15 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931813.bw</code></pre>
+<pre><code>## 2020-07-25 05:30:18 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931812.bw</code></pre>
 <pre><code>##    user  system elapsed 
-##  25.152   1.947  27.822</code></pre>
+##  23.241   1.839  26.257</code></pre>
 <div class="sourceCode" id="cb192"><pre class="downlit">
 <span class="co">## Use the expanded metadata we built for the gene model</span>
 <span class="fu">colData</span>(<span class="kw">rse_er</span>) <span class="op">&lt;-</span> <span class="fu">colData</span>(<span class="kw">rse_gene_scaled</span>)
@@ -1453,7 +1453,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ## # Genome: hg38
 ## # Nb of transcripts: 11419
 ## # Db created by: GenomicFeatures package from Bioconductor
-## # Creation time: 2020-07-24 21:34:00 +0000 (Fri, 24 Jul 2020)
+## # Creation time: 2020-07-25 05:31:16 +0000 (Sat, 25 Jul 2020)
 ## # GenomicFeatures version at creation time: 1.41.2
 ## # RSQLite version at creation time: 2.2.0
 ## # DBSCHEMAVERSION: 1.2</code></pre>
@@ -1489,8 +1489,8 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="kw">regions_ann</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/derfinder/man/annotateRegions.html">annotateRegions</a></span>(<span class="kw">regions_resized</span>,
     <span class="kw">gs_gencode_v25_hg38</span><span class="op">$</span><span class="kw">fullGenome</span>)
 </pre></div>
-<pre><code>## 2020-07-24 21:34:41 annotateRegions: counting</code></pre>
-<pre><code>## 2020-07-24 21:34:41 annotateRegions: annotating</code></pre>
+<pre><code>## 2020-07-25 05:31:47 annotateRegions: counting</code></pre>
+<pre><code>## 2020-07-25 05:31:47 annotateRegions: annotating</code></pre>
 <p>We can finally use <code><a href="https://rdrr.io/pkg/derfinderPlot/man/plotRegionCoverage.html">plotRegionCoverage()</a></code> to visualize the top 10 regions coloring by whether they are LOAD or control samples. Known exons are shown in dark blue, introns in light blue.</p>
 <div class="sourceCode" id="cb239"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/leekgroup/derfinderPlot">"derfinderPlot"</a></span>)
@@ -1524,7 +1524,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span>()[<span class="fl">3</span>] <span class="op">/</span> <span class="fl">60</span>, <span class="fl">1</span>)
 </pre></div>
 <pre><code>## elapsed 
-##     8.5</code></pre>
+##     7.4</code></pre>
 <div class="sourceCode" id="cb244"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(width = <span class="fl">100</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/r-lib/sessioninfo#readme">"sessioninfo"</a></span>)
@@ -1540,7 +1540,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       UTC                         
-##  date     2020-07-24                  
+##  date     2020-07-25                  
 ## 
 ## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────
 ##  package              * version    date       lib source                        
@@ -1596,7 +1596,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##  DESeq2               * 1.29.7     2020-07-16 [1] Bioconductor                  
 ##  dichromat              2.0-0      2013-01-24 [1] RSPM (R 4.0.0)                
 ##  digest                 0.6.25     2020-02-23 [2] RSPM (R 4.0.0)                
-##  DO.db                  2.9        2020-07-24 [1] Bioconductor                  
+##  DO.db                  2.9        2020-07-25 [1] Bioconductor                  
 ##  doParallel             1.0.15     2019-08-02 [1] RSPM (R 4.0.0)                
 ##  doRNG                  1.8.2      2020-01-27 [1] RSPM (R 4.0.0)                
 ##  DOSE                   3.15.0     2020-04-27 [1] Bioconductor                  
@@ -1626,7 +1626,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##  geneplotter            1.67.0     2020-04-27 [1] Bioconductor                  
 ##  generics               0.0.2      2018-11-29 [1] RSPM (R 4.0.0)                
 ##  GenomeInfoDb         * 1.25.8     2020-07-03 [1] Bioconductor                  
-##  GenomeInfoDbData       1.2.3      2020-07-24 [1] Bioconductor                  
+##  GenomeInfoDbData       1.2.3      2020-07-25 [1] Bioconductor                  
 ##  GenomicAlignments      1.25.3     2020-06-09 [1] Bioconductor                  
 ##  GenomicFeatures      * 1.41.2     2020-07-07 [1] Bioconductor                  
 ##  GenomicFiles           1.25.0     2020-04-27 [1] Bioconductor                  
@@ -1641,7 +1641,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##  ggrepel                0.8.2      2020-03-08 [1] RSPM (R 4.0.0)                
 ##  ggridges               0.5.2      2020-01-12 [1] RSPM (R 4.0.0)                
 ##  glue                   1.4.1      2020-05-13 [2] RSPM (R 4.0.0)                
-##  GO.db                * 3.11.4     2020-07-24 [1] Bioconductor                  
+##  GO.db                * 3.11.4     2020-07-25 [1] Bioconductor                  
 ##  GOSemSim               2.15.0     2020-04-27 [1] Bioconductor                  
 ##  goseq                  1.41.0     2020-04-27 [1] Bioconductor                  
 ##  GOstats                2.55.0     2020-04-27 [1] Bioconductor                  
@@ -1697,13 +1697,13 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##  NMF                    0.22.0     2020-02-12 [1] RSPM (R 4.0.0)                
 ##  nnet                   7.3-13     2020-02-25 [3] CRAN (R 4.0.0)                
 ##  openssl                1.4.1      2019-07-18 [2] RSPM (R 4.0.0)                
-##  org.Hs.eg.db         * 3.11.4     2020-07-24 [1] Bioconductor                  
+##  org.Hs.eg.db         * 3.11.4     2020-07-25 [1] Bioconductor                  
 ##  OrganismDbi            1.31.0     2020-04-27 [1] Bioconductor                  
 ##  pcaExplorer            2.15.2     2020-06-06 [1] Bioconductor                  
 ##  pheatmap               1.0.12     2019-01-04 [1] RSPM (R 4.0.0)                
 ##  pillar                 1.4.4      2020-05-05 [2] RSPM (R 4.0.0)                
 ##  pkgconfig              2.0.3      2019-09-22 [2] RSPM (R 4.0.0)                
-##  pkgdown                1.5.1.9000 2020-07-24 [1] Github (r-lib/pkgdown@eae56f0)
+##  pkgdown                1.5.1.9000 2020-07-25 [1] Github (r-lib/pkgdown@eae56f0)
 ##  pkgmaker               0.31.1     2020-03-19 [1] RSPM (R 4.0.0)                
 ##  plotly                 4.9.2.1    2020-04-04 [1] RSPM (R 4.0.0)                
 ##  plyr                   1.8.6      2020-03-03 [1] RSPM (R 4.0.0)                
@@ -1723,7 +1723,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##  RCurl                  1.98-1.2   2020-04-18 [1] RSPM (R 4.0.0)                
 ##  readr                  1.3.1      2018-12-21 [1] RSPM (R 4.0.0)                
 ##  recount              * 1.15.1     2020-05-12 [1] Bioconductor                  
-##  recountWorkshop2020  * 0.99.0     2020-07-24 [1] Bioconductor                  
+##  recountWorkshop2020  * 0.99.0     2020-07-25 [1] Bioconductor                  
 ##  RefManageR             1.2.12     2019-04-03 [1] RSPM (R 4.0.0)                
 ##  regionReport         * 1.23.2     2020-05-10 [1] Bioconductor                  
 ##  registry               0.5-1      2019-03-05 [1] RSPM (R 4.0.0)                
