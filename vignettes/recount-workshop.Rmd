@@ -1,5 +1,5 @@
 ---
-title: "Using the recount2 resource and related tools"
+title: "Human RNA-seq data from recount2 and related packages"
 author: 
   - name: Leonardo Collado-Torres
     affiliation:
@@ -19,7 +19,7 @@ author:
     - Department of Mental Health, Johns Hopkins Bloomberg School of Public Health
 date: May 29, 2019
 vignette: >
-  %\VignetteIndexEntry{Using the recount2 resource and related tools}
+  %\VignetteIndexEntry{Human RNA-seq data from recount2 and related packages}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding[utf8]{inputenc}
 bibliography: "`r system.file(package='recountWorkshop2020', 'vignettes', 'recount-workshop.bib')`"
@@ -32,9 +32,76 @@ output:
 csl: "`r system.file(package='recountWorkshop2020', 'vignettes', 'f1000-research.csl')`"
 ---
 
-# Using the recount2 resource and related tools
+# Human RNA-seq data from recount2 and related packages
 
-This workshop is an updated version of the `recountWorkshop` from BioC2017 available at [LieberInstitute/recountWorkshop](https://github.com/LieberInstitute/recountWorkshop) that is adapted from the `recountWorkflow` available via [F1000Research](https://f1000research.com/articles/6-1558/v1) and via [Bioconductor](http://www.bioconductor.org/packages/release/workflows/html/recountWorkflow.html)  [@recountWorkflow]. This workshop uses a smaller data set to speed up computation and reduce the required computational resources to run this code.
+This workshop is an updated version of the `recountWorkshop` from BioC2017 and BioC2019 available at [LieberInstitute/recountWorkshop](https://github.com/LieberInstitute/recountWorkshop) and [LieberInstitute/recountWorkshop2019](https://github.com/LieberInstitute/recountWorkshop2019) that is adapted from the `recountWorkflow` available via [F1000Research](https://f1000research.com/articles/6-1558/v1) and via [Bioconductor](http://www.bioconductor.org/packages/recountWorkflow)  [@recountWorkflow]. This workshop uses a smaller data set to speed up computation and reduce the required computational resources to run this code.
+
+
+## Instructor
+
+Leonardo Collado-Torres
+
+* [GitHub](https://github.com/lcolladotor)
+* [Twitter](https://twitter.com/fellgernon)
+* [Email](mailto:lcolladotor@gmail.com)
+
+## Workshop Description
+
+The recount2 project re-processed RNA sequencing (RNA-seq) data on over 70,000 human RNA-seq samples spanning a variety of tissues, cell types and disease conditions. Researchers can easily access these data via the `recount` Bioconductor package, and can quickly import gene, exon, exon-exon junction and base-pair coverage data for uniformly processed data from the SRA, GTEx and TCGA projects in R for analysis. This workshop will include an overview of the recount2 project as well as methods and tools that have been to improve it since 2017. The overview will be followed by a hands-on session where you will dive into `recount` and related packages along the lines of the [recount workflow](http://bioconductor.org/packages/release/workflows/html/recountWorkflow.html). We will also cover new related packages such as [`GenomicState`](http://bioconductor/packages/GenomicState). 
+
+In more detail, this workshop will cover different use cases of the `recount` package, including downloading and normalizing data, processing and cleaning relevant phenotype data (including `recount-brain`), performing differential expression (DE) analyses using other Bioconductor packages. The workshop will also cover how to use the base-pair coverage data for annotation-agnostic DE analyses and for visualizing coverage data for features of interest. After taking this workshop, attendees will be ready to enhance their analyses by leveraging RNA-seq data from 70,000 human samples.
+
+[recount2 website](https://jhubiostatistics.shinyapps.io/recount/), [recount package](http://bioconductor.org/packages/recount), [paper](http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html), [recount workflow](http://bioconductor.org/packages/release/workflows/html/recountWorkflow.html).
+
+## Pre-requisites
+
+* Basic knowledge of R syntax
+* Basic knowledge of RNA-seq or gene expression data
+* Familiarity with `SummarizedExperiment` [vignette](http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html)
+* Familiarity with the `RangedSummarizedExperiment` class
+
+## Workshop Participation
+
+Students are expected to ask questions during the recount2 overview presentation and to bring their own laptop so they can follow the hands-on portion of the workshop. You can download a Docker image with all the workshop files using:
+
+```bash
+docker run -e PASSWORD=bioc2020 -p 8787:8787 -d —rm lcollado/recountworkshop2020
+```
+
+Then, log in to RStudio at [http://localhost:8787](http://localhost:8787) using username `rstudio` and password `bioc2020`. Note that on Windows you need to provide your localhost IP address like `http://191.163.92.108:8787/` - find it using `docker-machine ip default` in Docker's terminal.
+
+To see the vignette on RStudio's window (from the docker image), run `browseVignettes(package = "recountWorkshop2020")`. Click on one of the links, "HTML", "source", "R code". In case of `The requested page was not found` error, add `help/` to the URL right after the hostname, e.g., [http://localhost:8787/help/library/recountWorkshop2020/doc/recount-workshop.html](http://localhost:8787/help/library/recountWorkshop2020/doc/recount-workshop.html). This is a [known bug](https://github.com/rocker-org/rocker-versioned/issues/178).
+
+### _Bioconductor_ packages used
+
+`SummarizedExperiment`, `recount`, `GenomicRanges`, `DESeq2`, `derfinder`, `regionReport` are among the packages that will be explicitly covered.
+
+### Time outline
+
+| Activity                     | Time |
+|------------------------------|------|
+| recount2 project overview                    | 10m  |
+| accessing gene count data with recount          | 15m  |
+| Gene-level analysis with recount2 and recount-brain        | 15m  |
+| Un-annotated transcriptome methods overview: `derfinder`, `GenomicState` | 5 min |
+| the future: recount3 | 5m |
+
+Total: a 50-55 minute session.
+
+## Workshop goals and objectives
+
+### Learning goals
+
+* Understand the publicly data available via the recount2 project beyond gene counts
+* Identify how recount2 data could be useful for your RNA-seq projects and how you can use it
+* Describe the annotation-agnostic methods powered by recount2 that complement other RNA-seq analysis pipelines
+
+### Learning objectives
+
+* Re-analyze public RNA-seq data using the recount Bioconductor package
+* Recognize how to access the different types of data hosted by recount2
+* Locate resources that enhance recount2 such as recount-brain, `derfinder`, and `GenomicState`
+
 
 ## Introduction
 
