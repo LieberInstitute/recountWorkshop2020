@@ -223,13 +223,13 @@
 <a href="#recount2-overview" class="anchor"></a>recount2 overview</h3>
 <p>The recount2 resource provides expression data summarized at different feature levels to enable novel cross-study analyses. Generally when investigators use the term <em>expression</em>, they think about gene expression. But more information can be extracted from RNA-seq data. Once RNA-seq reads have been aligned to the reference genome it is possible to determine the number of aligned reads overlapping each base-pair resulting in the genome base-pair coverage curve as shown in Figure @ref(fig:Figure1). In the example shown in Figure @ref(fig:Figure1) most of the reads overlap known exons from a gene. Those reads can be used to compute a count matrix at the exon or gene feature levels. Some reads span exon-exon junctions (jx) and while most match the annotation, some do not (jx 3 and 4). An exon-exon junction count matrix can be used to identify differentially expressed junctions, which can show which isoforms are differentially expressed given sufficient coverage. For example, junctions 2 and 5 are unique to isoform 2, while junction 6 is unique to isoform 1. The genome base-pair coverage data can be used with <code>derfinder</code> <span class="citation">(9)</span> to identify expressed regions, some of them could be un-annotated exons and together with the exon-exon junction data uncover potential new isoforms.</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure1.png" alt="Overview of the data available in recount2. Reads (pink boxes) aligned to the reference genome can be used to compute a base-pair coverage curve and identify exon-exon junctions (split reads). Gene and exon count matrices are generated using annotation information providing the gene (green boxes) and exon (blue boxes) coordinates together with the base-level coverage curve. The reads spanning exon-exon junctions (jx) are used to compute a third count matrix that might include un-annotated junctions (jx 3 and 4). Without using annotation information, expressed regions (orange box) can be determined from the base-level coverage curve to then construct data-driven count matrices." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure1.png" alt="Overview of the data available in recount2. Reads (pink boxes) aligned to the reference genome can be used to compute a base-pair coverage curve and identify exon-exon junctions (split reads). Gene and exon count matrices are generated using annotation information providing the gene (green boxes) and exon (blue boxes) coordinates together with the base-level coverage curve. The reads spanning exon-exon junctions (jx) are used to compute a third count matrix that might include un-annotated junctions (jx 3 and 4). Without using annotation information, expressed regions (orange box) can be determined from the base-level coverage curve to then construct data-driven count matrices." width="100%"><p class="caption">
 Overview of the data available in recount2. Reads (pink boxes) aligned to the reference genome can be used to compute a base-pair coverage curve and identify exon-exon junctions (split reads). Gene and exon count matrices are generated using annotation information providing the gene (green boxes) and exon (blue boxes) coordinates together with the base-level coverage curve. The reads spanning exon-exon junctions (jx) are used to compute a third count matrix that might include un-annotated junctions (jx 3 and 4). Without using annotation information, expressed regions (orange box) can be determined from the base-level coverage curve to then construct data-driven count matrices.
 </p>
 </div>
 <p>recount2 provides gene, exon, and exon-exon junction count matrices both in text format and <em>RangedSummarizedExperiment</em> objects (RSE) <span class="citation">(10)</span> as shown in Figure @ref(fig:Figure2). These RSE objects provide information about the expression features (for example gene ids) and the samples. In this workshop we will explain how to add metadata to the RSE objects in recount2 in order to ask biological questions. recount2 also provides coverage data in the form of BigWig files. All four features can be accessed with the <code>recount</code> Bioconductor package <span class="citation">(8)</span>. <code>recount</code> also allows sending queries to <code>snaptron</code> <span class="citation">(11)</span> to search for specific exon-exon junctions.</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure2.png" alt="recount2 provides coverage count matrices in RangedSummarizedExperiment (rse) objects. Once the rse object has been downloaded and loaded into R, the feature information is accessed with rowRanges(rse) (blue box), the counts with assays(rse)\$counts (pink box) and the sample metadata with colData(rse) (green box). The sample metadata can be expanded using add\_predictions(rse) (orange box) or with custom code (brown box) matching by a unique sample identifier such as the SRA Run id. The rse object is inside the purple box and matching data is highlighted in each box." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure2.png" alt="recount2 provides coverage count matrices in RangedSummarizedExperiment (rse) objects. Once the rse object has been downloaded and loaded into R, the feature information is accessed with rowRanges(rse) (blue box), the counts with assays(rse)\$counts (pink box) and the sample metadata with colData(rse) (green box). The sample metadata can be expanded using add\_predictions(rse) (orange box) or with custom code (brown box) matching by a unique sample identifier such as the SRA Run id. The rse object is inside the purple box and matching data is highlighted in each box." width="100%"><p class="caption">
 recount2 provides coverage count matrices in RangedSummarizedExperiment (rse) objects. Once the rse object has been downloaded and loaded into R, the feature information is accessed with rowRanges(rse) (blue box), the counts with assays(rse)$counts (pink box) and the sample metadata with colData(rse) (green box). The sample metadata can be expanded using add_predictions(rse) (orange box) or with custom code (brown box) matching by a unique sample identifier such as the SRA Run id. The rse object is inside the purple box and matching data is highlighted in each box.
 </p>
 </div>
@@ -245,7 +245,8 @@ recount2 provides coverage count matrices in RangedSummarizedExperiment (rse) ob
     <span class="st">"recount"</span>, <span class="st">"GenomicRanges"</span>, <span class="st">"DESeq2"</span>, <span class="st">"ideal"</span>, <span class="st">"regionReport"</span>,
     <span class="st">"clusterProfiler"</span>, <span class="st">"org.Hs.eg.db"</span>, <span class="st">"gplots"</span>, <span class="st">"derfinder"</span>,
     <span class="st">"rtracklayer"</span>, <span class="st">"GenomicFeatures"</span>, <span class="st">"bumphunter"</span>, <span class="st">"derfinderPlot"</span>,
-    <span class="st">"sessioninfo"</span>, <span class="st">"GenomicState"</span>))
+    <span class="st">"sessioninfo"</span>, <span class="st">"GenomicState"</span>
+))
 </pre></div>
 <p>Once installed, load all of the packages with the following code.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
@@ -272,19 +273,19 @@ recount2 provides coverage count matrices in RangedSummarizedExperiment (rse) ob
 <a href="#coverage-counts-provided-by-recount2" class="anchor"></a>Coverage counts provided by recount2</h2>
 <p>The most accessible features are the gene, exon and exon-exon junction count matrices. This section explains them in greater detail. Figure @ref(fig:Figure3) shows 16 RNA-seq reads each 3 base-pairs long and a reference genome.</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure3.png" alt="RNA-seq starting data. 16 RNA-seq un-aligned RNA-seq reads 3 base-pairs long are shown (pink boxes) along a reference genome 16 base-pairs long (white box)." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure3.png" alt="RNA-seq starting data. 16 RNA-seq un-aligned RNA-seq reads 3 base-pairs long are shown (pink boxes) along a reference genome 16 base-pairs long (white box)." width="100%"><p class="caption">
 RNA-seq starting data. 16 RNA-seq un-aligned RNA-seq reads 3 base-pairs long are shown (pink boxes) along a reference genome 16 base-pairs long (white box).
 </p>
 </div>
 <p>Reads in the recount2 resource were aligned with Rail-RNA aligner <span class="citation">(12)</span> which is splice-aware and can soft clip reads. Figure @ref(fig:Figure4) shows the reads aligned to the reference genome. Some of the reads are split as they span an exon-exon junction. Two of the reads were soft clipped meaning that just a portion of the reads aligned (top left in purple).</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure4.png" alt="Aligned RNA-seq reads. Spice-aware RNA-seq aligners such as Rail-RNA are able to find the coordinates to which the reads map, even if they span exon-exon junctions (connected boxes). Rail-RNA soft clips some reads (purple boxes with rough edges) such that a portion of these reads align to the reference genome." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure4.png" alt="Aligned RNA-seq reads. Spice-aware RNA-seq aligners such as Rail-RNA are able to find the coordinates to which the reads map, even if they span exon-exon junctions (connected boxes). Rail-RNA soft clips some reads (purple boxes with rough edges) such that a portion of these reads align to the reference genome." width="100%"><p class="caption">
 Aligned RNA-seq reads. Spice-aware RNA-seq aligners such as Rail-RNA are able to find the coordinates to which the reads map, even if they span exon-exon junctions (connected boxes). Rail-RNA soft clips some reads (purple boxes with rough edges) such that a portion of these reads align to the reference genome.
 </p>
 </div>
 <p>In order to compute the gene and exon count matrices we first have to process the annotation, which for recount2 is Gencode v25 (CHR regions) with hg38 coordinates. Although <code>recount</code> can generate count matrices for other annotations using hg38 coordinates. Figure @ref(fig:Figure5) shows two isoforms for a gene composed of 3 different exons.</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure5.png" alt="Gene annotation. A single gene with two isoforms composed by three distinct exons (blue boxes) is illustrated. Exons 1 and 3 share the first five base-pairs while exon 2 is common to both isoforms." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure5.png" alt="Gene annotation. A single gene with two isoforms composed by three distinct exons (blue boxes) is illustrated. Exons 1 and 3 share the first five base-pairs while exon 2 is common to both isoforms." width="100%"><p class="caption">
 Gene annotation. A single gene with two isoforms composed by three distinct exons (blue boxes) is illustrated. Exons 1 and 3 share the first five base-pairs while exon 2 is common to both isoforms.
 </p>
 </div>
@@ -314,19 +315,19 @@ Gene annotation. A single gene with two isoforms composed by three distinct exon
 ##   -------
 ##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure6.png" alt="Disjoint exons. Windows of distinct exonic sequence for the example gene. Disjoint exons 1 and 2 form exon 1." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure6.png" alt="Disjoint exons. Windows of distinct exonic sequence for the example gene. Disjoint exons 1 and 2 form exon 1." width="100%"><p class="caption">
 Disjoint exons. Windows of distinct exonic sequence for the example gene. Disjoint exons 1 and 2 form exon 1.
 </p>
 </div>
 <p>Now that we have disjoint exons, we can compute the base-pair coverage for each of them as shown in Figure @ref(fig:Figure7). That is, for each base-pair that corresponds to exonic sequence, we compute the number of reads overlapping that given base-pair. For example, the first base-pair is covered by 3 different reads and it does not matter whether the reads themselves were soft clipped. Not all reads or bases of a read contribute information to this step as some do not overlap known exonic sequence (light pink in Figure @ref(fig:Figure7)).</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure7.png" alt="Base-pair coverage counting for exonic base-pairs. At each exonic base-pair we compute the number of reads overlapping that given base-pair. The first base (orange arrow) has 3 reads overlapping that base-pair. Base-pair 11 has a coverage of 3 but does not overlap known exonic sequence, so that information is not used for the gene and exon count matrices (grey arrow). If a read partially overlaps exonic sequence, only the portion that overlaps is used in the computation (see right most read)." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure7.png" alt="Base-pair coverage counting for exonic base-pairs. At each exonic base-pair we compute the number of reads overlapping that given base-pair. The first base (orange arrow) has 3 reads overlapping that base-pair. Base-pair 11 has a coverage of 3 but does not overlap known exonic sequence, so that information is not used for the gene and exon count matrices (grey arrow). If a read partially overlaps exonic sequence, only the portion that overlaps is used in the computation (see right most read)." width="100%"><p class="caption">
 Base-pair coverage counting for exonic base-pairs. At each exonic base-pair we compute the number of reads overlapping that given base-pair. The first base (orange arrow) has 3 reads overlapping that base-pair. Base-pair 11 has a coverage of 3 but does not overlap known exonic sequence, so that information is not used for the gene and exon count matrices (grey arrow). If a read partially overlaps exonic sequence, only the portion that overlaps is used in the computation (see right most read).
 </p>
 </div>
 <p>With base-pair coverage for the exonic sequences computed, the coverage count for each distinct exon is simply the sum of the base-pair coverage for each base in a given distinct exon. For example, the coverage count for disjoint exon 2 is <span class="math inline">\(2 + 2 + 3 = 7\)</span> as shown in Figure @ref(fig:Figure8). The gene coverage count is then <span class="math inline">\(\sum_i^n \texttt{coverage}_i\)</span> where <span class="math inline">\(n\)</span> is the number of exonic base-pairs for the gene and is equal to the sum of the coverage counts for its disjoint exons as shown in Figure @ref(fig:Figure8).</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure8.png" alt="Exon and gene coverage counts. The coverage counts for each disjoint exon are the sum of the base-pair coverage. The gene coverage count is the sum of the disjoint exons coverage counts." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure8.png" alt="Exon and gene coverage counts. The coverage counts for each disjoint exon are the sum of the base-pair coverage. The gene coverage count is the sum of the disjoint exons coverage counts." width="100%"><p class="caption">
 Exon and gene coverage counts. The coverage counts for each disjoint exon are the sum of the base-pair coverage. The gene coverage count is the sum of the disjoint exons coverage counts.
 </p>
 </div>
@@ -349,7 +350,7 @@ Exon and gene coverage counts. The coverage counts for each disjoint exon are th
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GenomicRanges"</span>)
 <span class="kw">reads</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html">GRanges</a></span>(<span class="st">"seq"</span>, <span class="fu">IRanges</span>(
     start = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(
-        <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">10</span>, <span class="fl">13</span>, <span class="fl">14</span>), 
+        <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">10</span>, <span class="fl">13</span>, <span class="fl">14</span>),
         <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">1</span>)
     ), width = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(
         <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">3</span>),
@@ -367,17 +368,22 @@ Exon and gene coverage counts. The coverage counts for each disjoint exon are th
 <span class="co">## Code for reproducing the bottom portion of Figure 8.</span>
 <span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span>(<span class="st">"base_pair_coverage.pdf"</span>, width = <span class="fl">20</span>)
 <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(mar = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">2</span>) <span class="op">+</span> <span class="fl">0.1</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">cov</span>, type = <span class="st">"o"</span>, col = <span class="st">"violetred1"</span>, lwd = <span class="fl">10</span>, ylim = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">5</span>),
-     xlab = <span class="st">"Genome"</span>, ylab = <span class="st">"Coverage"</span>, cex.axis = <span class="fl">2</span>, cex.lab = <span class="fl">3</span>,
-     bty = <span class="st">"n"</span>)
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">cov</span>,
+    type = <span class="st">"o"</span>, col = <span class="st">"violetred1"</span>, lwd = <span class="fl">10</span>, ylim = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">5</span>),
+    xlab = <span class="st">"Genome"</span>, ylab = <span class="st">"Coverage"</span>, cex.axis = <span class="fl">2</span>, cex.lab = <span class="fl">3</span>,
+    bty = <span class="st">"n"</span>
+)
 <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">cov</span>)), <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">cov</span>)), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="kw">cov</span>, <span class="fl">0</span>),
-        border = <span class="fl">NA</span>, density = <span class="op">-</span><span class="fl">1</span>, col = <span class="st">"light blue"</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">cov</span>)), <span class="kw">cov</span>, col = <span class="st">"violetred1"</span>, type = <span class="st">"o"</span>,
-       lwd = <span class="fl">10</span>)
+    border = <span class="fl">NA</span>, density = <span class="op">-</span><span class="fl">1</span>, col = <span class="st">"light blue"</span>
+)
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">cov</span>)), <span class="kw">cov</span>,
+    col = <span class="st">"violetred1"</span>, type = <span class="st">"o"</span>,
+    lwd = <span class="fl">10</span>
+)
 <span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span>()
 </pre></div>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure9.png" alt="Area under coverage (AUC). The area under coverage is the sum of the base-pair coverage for all positions in the genome regardless of the annotation. It is the area under the base-level coverage curve shown as the light blue area under the pink curve." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure9.png" alt="Area under coverage (AUC). The area under coverage is the sum of the base-pair coverage for all positions in the genome regardless of the annotation. It is the area under the base-level coverage curve shown as the light blue area under the pink curve." width="100%"><p class="caption">
 Area under coverage (AUC). The area under coverage is the sum of the base-pair coverage for all positions in the genome regardless of the annotation. It is the area under the base-level coverage curve shown as the light blue area under the pink curve.
 </p>
 </div>
@@ -397,18 +403,18 @@ Area under coverage (AUC). The area under coverage is the sum of the base-pair c
 <a href="#enriching-the-annotation" class="anchor"></a>Enriching the annotation</h3>
 <p>Data in recount2 can be used for annotation-agnostic analyses and enriching the known annotation. Just like exon and gene coverage count matrices, recount2 provides exon-exon junction count matrices. These matrices can be used to identify new isoforms (Figure @ref(fig:Figure10)) or identify differentially expressed isoforms. For example, exon-exon junctions 2, 5 and 6 in Figure @ref(fig:Figure1) are only present in one annotated isoform. <code>Snaptron</code> <span class="citation">(11)</span> allows programatic and high-level queries of the exon-exon junction information and it is graphical user interface is specially useful for visualizing this data. Inside R, the <code>recount</code> function <code><a href="https://rdrr.io/pkg/recount/man/snaptron_query.html">snaptron_query()</a></code> can be used for searching specific exon-exon junctions in recount2. A full R interface to <code>Snaptron</code> is under development.</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure10.png" alt="Exon-exon junctions go beyond the annotation. Reads spanning exon-exon junctions are highlighted and compared against the annotation. Three of them match the annotated junctions, but one (blue and orange read) spans an un-annotated exon-exon junction with the left end matching the annotation and the right end hinting at a possible new isoform for this gene (blue and orange isoform)." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure10.png" alt="Exon-exon junctions go beyond the annotation. Reads spanning exon-exon junctions are highlighted and compared against the annotation. Three of them match the annotated junctions, but one (blue and orange read) spans an un-annotated exon-exon junction with the left end matching the annotation and the right end hinting at a possible new isoform for this gene (blue and orange isoform)." width="100%"><p class="caption">
 Exon-exon junctions go beyond the annotation. Reads spanning exon-exon junctions are highlighted and compared against the annotation. Three of them match the annotated junctions, but one (blue and orange read) spans an un-annotated exon-exon junction with the left end matching the annotation and the right end hinting at a possible new isoform for this gene (blue and orange isoform).
 </p>
 </div>
 <p>The base-pair coverage data from recount2 can be used together with <code>derfinder</code> <span class="citation">(9)</span> to identify expressed regions of the genome, providing another annotation-agnostic analysis of the expression data. Using the function <code><a href="https://rdrr.io/pkg/recount/man/expressed_regions.html">expressed_regions()</a></code> we can identify regions of expression based on a given data set in recount2. These regions might overlap known exons but can also provide information about intron retention events (Figure @ref(fig:Figure11)), improve detection of exon boundaries (Figure @ref(fig:Figure12)), and help identify new exons (Fig @ref(fig:Figure1)) or expressed sequences in intergenic regions. Using <code><a href="https://rdrr.io/pkg/recount/man/coverage_matrix.html">coverage_matrix()</a></code> we can compute a coverage matrix based on the expressed regions or another set of genomic intervals. The resulting matrix can then be used for a differential expression analysis, just like the exon, gene and exon-exon junction matrices.</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure11.png" alt="Intron retention events. Some reads might align with known intronic segments of the genome and provide information for exploring intron retention events (pink read). Some might support an intron retention event or a new isoform when coupled with exon-exon junction data (orange read)." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure11.png" alt="Intron retention events. Some reads might align with known intronic segments of the genome and provide information for exploring intron retention events (pink read). Some might support an intron retention event or a new isoform when coupled with exon-exon junction data (orange read)." width="100%"><p class="caption">
 Intron retention events. Some reads might align with known intronic segments of the genome and provide information for exploring intron retention events (pink read). Some might support an intron retention event or a new isoform when coupled with exon-exon junction data (orange read).
 </p>
 </div>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure12.png" alt="Exon boundaries. Reads that go beyond the known exon boundaries can inform us of whether the annotated boundaries are correct or if there was a run-off transcription event." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure12.png" alt="Exon boundaries. Reads that go beyond the known exon boundaries can inform us of whether the annotated boundaries are correct or if there was a run-off transcription event." width="100%"><p class="caption">
 Exon boundaries. Reads that go beyond the known exon boundaries can inform us of whether the annotated boundaries are correct or if there was a run-off transcription event.
 </p>
 </div>
@@ -441,7 +447,7 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 ## 1643 SRP056604</code></pre>
 <div class="sourceCode" id="cb17"><pre class="downlit">
 <span class="co">## Download the data if it is not there</span>
-<span class="co">if</span>(<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw">local_path</span>, <span class="st">"rse_gene.Rdata"</span>))) {
+<span class="co">if</span> (<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw">local_path</span>, <span class="st">"rse_gene.Rdata"</span>))) {
     <span class="co">## In case you decide to download the data instead of using the</span>
     <span class="co">## pre-installed data</span>
     <span class="kw">local_path</span> <span class="op">&lt;-</span> <span class="st">"SRP056604"</span>
@@ -502,10 +508,12 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <span class="co">## of reads Rail-RNA downloaded</span>
 <span class="kw">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/all_metadata.html">all_metadata</a></span>()
 </pre></div>
-<pre><code>## 2020-07-26 19:35:36 downloading the metadata to /tmp/Rtmp1F61KK/metadata_clean_sra.Rdata</code></pre>
+<pre><code>## 2020-07-26 21:24:06 downloading the metadata to /tmp/RtmpKDI1FD/metadata_clean_sra.Rdata</code></pre>
 <div class="sourceCode" id="cb27"><pre class="downlit">
-<span class="kw">meta</span>[<span class="kw">meta</span><span class="op">$</span><span class="kw">run</span> <span class="op">==</span> <span class="st">'SRR2071341'</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"read_count_as_reported_by_sra"</span>, <span class="st">"reads_downloaded"</span>)]
+<span class="kw">meta</span>[
+    <span class="kw">meta</span><span class="op">$</span><span class="kw">run</span> <span class="op">==</span> <span class="st">"SRR2071341"</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"read_count_as_reported_by_sra"</span>, <span class="st">"reads_downloaded"</span>)
+]
 </pre></div>
 <pre><code>## DataFrame with 1 row and 2 columns
 ##   read_count_as_reported_by_sra reads_downloaded
@@ -513,7 +521,8 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 ## 1                     240797206        240797206</code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/summary.html">summary</a></span>(<span class="kw">meta</span><span class="op">$</span><span class="kw">proportion_of_reads_reported_by_sra_downloaded</span>[
-    <span class="kw">meta</span><span class="op">$</span><span class="kw">project</span> <span class="op">==</span> <span class="st">'SRP045638'</span>])
+    <span class="kw">meta</span><span class="op">$</span><span class="kw">project</span> <span class="op">==</span> <span class="st">"SRP045638"</span>
+])
 </pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.5719  0.9165  0.9788  0.9532  1.0000  1.0000</code></pre>
@@ -623,19 +632,23 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <div class="sourceCode" id="cb55"><pre class="downlit">
 <span class="co">## Get the case status: either LOAD or control</span>
 <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">case</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">characteristics</span>, <span class="fu">function</span>(<span class="kw">x</span>)
-        <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"LOAD"</span>, <span class="kw">x</span>)), <span class="st">"LOAD"</span>, <span class="st">"control"</span>))
+    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">characteristics</span>, <span class="fu">function</span>(<span class="kw">x</span>) {
+          <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"LOAD"</span>, <span class="kw">x</span>)), <span class="st">"LOAD"</span>, <span class="st">"control"</span>)
+      })
 )
 
 <span class="co">## Get the sex</span>
 <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(
-    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">characteristics</span>, <span class="fu">function</span>(<span class="kw">x</span>)
-        <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"female"</span>, <span class="kw">x</span>)),
-    <span class="st">"female"</span>, <span class="st">"male"</span>))
+    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">characteristics</span>, <span class="fu">function</span>(<span class="kw">x</span>) {
+          <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"female"</span>, <span class="kw">x</span>)),
+              <span class="st">"female"</span>, <span class="st">"male"</span>
+          )
+      })
 )
 
 <span class="co">## Extract the age. Note that one of them is a bit more complicated.</span>
-<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">characteristics</span>,
+<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(
+    <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">characteristics</span>,
     <span class="fu">function</span>(<span class="kw">x</span>) {
         <span class="kw">y</span> <span class="op">&lt;-</span> <span class="kw">x</span>[<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"age.*(yrs)"</span>, <span class="kw">x</span>)]
         <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span>(<span class="st">"age.*\\(yrs\\): |&gt;"</span>, <span class="st">""</span>, <span class="kw">y</span>))
@@ -668,7 +681,7 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <span class="co">## Add the predictions</span>
 <span class="kw">rse_gene</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_predictions.html">add_predictions</a></span>(<span class="kw">rse_gene</span>)
 </pre></div>
-<pre><code>## 2020-07-26 19:35:40 downloading the predictions to /tmp/Rtmp1F61KK/PredictedPhenotypes_v0.0.06.rda</code></pre>
+<pre><code>## 2020-07-26 21:24:10 downloading the predictions to /tmp/RtmpKDI1FD/PredictedPhenotypes_v0.0.06.rda</code></pre>
 <pre><code>## Loading objects:
 ##   PredictedPhenotypes</code></pre>
 <div class="sourceCode" id="cb65"><pre class="downlit">
@@ -723,8 +736,10 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 ## SRR1931812                       SINGLE                    0.908575</code></pre>
 <p>From the predictions, we see that all samples are predicted to be from the brain, which matches the samples description. We also have predicted sex which we can compare against the reported sex.</p>
 <div class="sourceCode" id="cb69"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="st">"Observed"</span> = <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">sex</span>,
-    <span class="st">"Predicted"</span> = <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">predicted_sex</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(
+    <span class="st">"Observed"</span> = <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">sex</span>,
+    <span class="st">"Predicted"</span> = <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">predicted_sex</span>
+)
 </pre></div>
 <pre><code>##         Predicted
 ## Observed female male Unassigned
@@ -737,14 +752,14 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
     <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">predicted_sex</span>)
 
 <span class="co">## Matching sex vs other variables</span>
-<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="st">'Matched Sex'</span> = <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">matching_sex</span>, <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">case</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="st">"Matched Sex"</span> = <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">matching_sex</span>, <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">case</span>)
 </pre></div>
 <pre><code>##            
 ## Matched Sex control LOAD
 ##       FALSE       2    2
 ##       TRUE        2    2</code></pre>
 <div class="sourceCode" id="cb73"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="st">'Matched Sex'</span> = <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">matching_sex</span>, <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">age</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="st">"Matched Sex"</span> = <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">matching_sex</span>, <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">age</span>)
 </pre></div>
 <pre><code>##            
 ## Matched Sex 77 82 83 85 87 90
@@ -752,7 +767,8 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 ##       TRUE   1  2  0  0  0  1</code></pre>
 <div class="sourceCode" id="cb75"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">mapped_read_count</span> <span class="op">~</span> <span class="fu">colData</span>(<span class="kw">rse_gene</span>)<span class="op">$</span><span class="kw">matching_sex</span>,
-    ylab = <span class="st">"Mapped read count"</span>, xlab = <span class="st">"Matching sex"</span>)
+    ylab = <span class="st">"Mapped read count"</span>, xlab = <span class="st">"Matching sex"</span>
+)
 </pre></div>
 <p><img src="recount-workshop_files/figure-html/matching%20sex-1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>There are no discernible differences by case, age or mapped read count when compared with the matching sex status.</p>
@@ -763,7 +779,7 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <p>Ultimately, more sample metadata information could be available elsewhere which can be useful for analyses. This information might be provided in the paper describing the data, the SRA Run Selector or other sources. As shown in Figure @ref(fig:Figure2), it is possible to append information to the <code>colData()</code> slot as long as there is a unique sample identifier such as the SRA Run id.</p>
 <p>For our example use case, project SRP056604 has redundant information with the <code>characteristics</code> and the SRA Run selector <a href="https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP056604" class="uri">https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP056604</a>. However, this might not be the case for other projects. While the SRA Run Selector information is redundant in this case, we can practice adding it. We can download that information into text file named <code>SraRunTable.txt</code> by default, then load it into R, sort it appropriately and then append it to the <code>colData()</code> slot. Below we do so for the SRP056604 project.</p>
 <div class="sourceCode" id="cb76"><pre class="downlit">
-<span class="co">## Save the information from </span>
+<span class="co">## Save the information from</span>
 <span class="co">## https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP056604</span>
 <span class="co">## to a table. We saved the file as SRP056604/SraRunTable.txt.</span>
 <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw">local_path</span>, <span class="st">"SraRunTable.txt"</span>))
@@ -876,22 +892,22 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <h4 class="hasAnchor">
 <a href="#add-curated-metadata-for-brain-studies" class="anchor"></a>Add curated metadata for brain studies</h4>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure-1.png" alt="Example variables (blue column) and values of the data present in recount-brain." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure-1.png" alt="Example variables (blue column) and values of the data present in recount-brain." width="100%"><p class="caption">
 Example variables (blue column) and values of the data present in recount-brain.
 </p>
 </div>
 <p>To facilitate analyses of brain studies we further curated 62 SRA projects and merged them with GTEx and TCGA brain samples to create <code>recount-brain</code> <span class="citation">(16)</span> which contains brain sample metadata (Fig @ref(fig:Figure13)). SRP056604 is one of those 62 projects so we can easily include all this metadata to our RSE object using the <code><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata()</a></code> function in <code>recount</code>. It works very similar to <code><a href="https://rdrr.io/pkg/recount/man/add_predictions.html">add_predictions()</a></code>.</p>
 <div class="figure" style="text-align: center">
-<img src="../../../../usr/local/lib/R/host-site-library/recountWorkshop2020/vignettes/Figure2.jpg" alt="Uses of recount-brain and its relationship with recount2 . recount-brain facilitates identifying project(s) of interest (purple box) programmatically or interactively through https://jhubiostatistics.shinyapps.io/recount-brain/ . After downloading expression data from recount2 , recount-brain can enrich the sample metadata for brain studies. This information can be used to perform analyses to find differentially expressed genes and enriched gene sets such as those exemplified with SRA Study SRP027383 (Bao et al., 2014) , where the top differentially expressed gene among glioblastoma samples in recount2 is SCM4 . Black boxes represent R code with functions highlighted in blue, input arguments in green, and R objects in white." width="100%"><p class="caption">
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure2.jpg" alt="Uses of recount-brain and its relationship with recount2 . recount-brain facilitates identifying project(s) of interest (purple box) programmatically or interactively through https://jhubiostatistics.shinyapps.io/recount-brain/ . After downloading expression data from recount2 , recount-brain can enrich the sample metadata for brain studies. This information can be used to perform analyses to find differentially expressed genes and enriched gene sets such as those exemplified with SRA Study SRP027383 (Bao et al., 2014) , where the top differentially expressed gene among glioblastoma samples in recount2 is SCM4 . Black boxes represent R code with functions highlighted in blue, input arguments in green, and R objects in white." width="100%"><p class="caption">
 Uses of recount-brain and its relationship with recount2 . recount-brain facilitates identifying project(s) of interest (purple box) programmatically or interactively through <a href="https://jhubiostatistics.shinyapps.io/recount-brain/" class="uri">https://jhubiostatistics.shinyapps.io/recount-brain/</a> . After downloading expression data from recount2 , recount-brain can enrich the sample metadata for brain studies. This information can be used to perform analyses to find differentially expressed genes and enriched gene sets such as those exemplified with SRA Study SRP027383 (Bao et al., 2014) , where the top differentially expressed gene among glioblastoma samples in recount2 is SCM4 . Black boxes represent R code with functions highlighted in blue, input arguments in green, and R objects in white.
 </p>
 </div>
 <p>We can use <code><a href="https://rdrr.io/pkg/recount/man/add_predictions.html">add_predictions()</a></code> without specifying the <code>rse</code> argument as shown below to download the full <code>recount-brain</code> curated metadata (Fig @ref(fig:Figure14)).</p>
 <div class="sourceCode" id="cb88"><pre class="downlit">
 <span class="co">## Don't specify the rse argument to download the full recount_brain table</span>
-<span class="kw">recount_brain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata</a></span>(source = <span class="st">'recount_brain_v2'</span>)
+<span class="kw">recount_brain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata</a></span>(source = <span class="st">"recount_brain_v2"</span>)
 </pre></div>
-<pre><code>## 2020-07-26 19:35:42 downloading the recount_brain metadata to /tmp/Rtmp1F61KK/recount_brain_v2.Rdata</code></pre>
+<pre><code>## 2020-07-26 21:24:11 downloading the recount_brain metadata to /tmp/RtmpKDI1FD/recount_brain_v2.Rdata</code></pre>
 <pre><code>## Loading objects:
 ##   recount_brain</code></pre>
 <div class="sourceCode" id="cb91"><pre class="downlit">
@@ -900,8 +916,10 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <pre><code>## [1] 6547   65</code></pre>
 <div class="sourceCode" id="cb93"><pre class="downlit">
 <span class="co">## Explore some of the variables for SRP056604</span>
-<span class="kw">recount_brain</span>[<span class="kw">recount_brain</span><span class="op">$</span><span class="kw">Study_full</span> <span class="op">==</span> <span class="st">'SRP056604'</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'age'</span>, <span class="st">'age_units'</span>,
-    <span class="st">'sex'</span>, <span class="st">'rin'</span>, <span class="st">'pmi'</span>, <span class="st">'pmi_units'</span>, <span class="st">'pathology'</span>, <span class="st">'disease_status'</span>)]
+<span class="kw">recount_brain</span>[<span class="kw">recount_brain</span><span class="op">$</span><span class="kw">Study_full</span> <span class="op">==</span> <span class="st">"SRP056604"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+    <span class="st">"age"</span>, <span class="st">"age_units"</span>,
+    <span class="st">"sex"</span>, <span class="st">"rin"</span>, <span class="st">"pmi"</span>, <span class="st">"pmi_units"</span>, <span class="st">"pathology"</span>, <span class="st">"disease_status"</span>
+)]
 </pre></div>
 <pre><code>##             age age_units    sex  rin  pmi pmi_units      pathology
 ## SRP056604.1  82     Years female 6.90 2.33     Hours Braak Stage VI
@@ -927,12 +945,12 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 </pre></div>
 <pre><code>## [1]  8 40</code></pre>
 <div class="sourceCode" id="cb97"><pre class="downlit">
-<span class="kw">rse_gene</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata</a></span>(<span class="kw">rse_gene</span>, source = <span class="st">'recount_brain_v2'</span>)
+<span class="kw">rse_gene</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata</a></span>(<span class="kw">rse_gene</span>, source = <span class="st">"recount_brain_v2"</span>)
 </pre></div>
-<pre><code>## 2020-07-26 19:35:43 downloading the recount_brain metadata to /tmp/Rtmp1F61KK/recount_brain_v2.Rdata</code></pre>
+<pre><code>## 2020-07-26 21:24:12 downloading the recount_brain metadata to /tmp/RtmpKDI1FD/recount_brain_v2.Rdata</code></pre>
 <pre><code>## Loading objects:
 ##   recount_brain</code></pre>
-<pre><code>## 2020-07-26 19:35:43 found 8 out of 8 samples in the recount_brain metadata</code></pre>
+<pre><code>## 2020-07-26 21:24:13 found 8 out of 8 samples in the recount_brain metadata</code></pre>
 <div class="sourceCode" id="cb101"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>))
 </pre></div>
@@ -974,8 +992,10 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##   to improve GLM convergence.</code></pre>
 <div class="sourceCode" id="cb108"><pre class="downlit">
 <span class="co">## Perform DE analysis</span>
-<span class="kw">dds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span>(<span class="kw">dds</span>, test = <span class="st">"LRT"</span>, reduced = <span class="op">~</span> <span class="kw">sex</span> <span class="op">+</span> <span class="kw">age</span> <span class="op">+</span> <span class="kw">pmi</span>,
-    fitType = <span class="st">"local"</span>)
+<span class="kw">dds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span>(<span class="kw">dds</span>,
+    test = <span class="st">"LRT"</span>, reduced = <span class="op">~</span> <span class="kw">sex</span> <span class="op">+</span> <span class="kw">age</span> <span class="op">+</span> <span class="kw">pmi</span>,
+    fitType = <span class="st">"local"</span>
+)
 </pre></div>
 <pre><code>## estimating size factors</code></pre>
 <pre><code>## estimating dispersions</code></pre>
@@ -986,13 +1006,15 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <pre><code>## 2 rows did not converge in beta, labelled in mcols(object)$fullBetaConv. Use larger maxit argument with nbinomLRT</code></pre>
 <div class="sourceCode" id="cb116"><pre class="downlit">
 <span class="co">## Explore results</span>
-<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotMA.html">plotMA</a></span>(<span class="kw">dds</span>, main=<span class="st">"DESeq2 results for SRP056604"</span>,
-    contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'case'</span>, <span class="st">'LOAD'</span>, <span class="st">'control'</span>), alpha = <span class="fl">0.01</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotMA.html">plotMA</a></span>(<span class="kw">dds</span>,
+    main = <span class="st">"DESeq2 results for SRP056604"</span>,
+    contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"case"</span>, <span class="st">"LOAD"</span>, <span class="st">"control"</span>), alpha = <span class="fl">0.01</span>
+)
 </pre></div>
 <p><img src="recount-workshop_files/figure-html/deseq2_de-1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>We can use <code>ideal</code> <span class="citation">(19)</span> to make a volcano plot of the DE results.</p>
 <div class="sourceCode" id="cb117"><pre class="downlit">
-<span class="kw">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span>(<span class="kw">dds</span>, contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'case'</span>, <span class="st">'LOAD'</span>, <span class="st">'control'</span>), alpha = <span class="fl">0.01</span>)
+<span class="kw">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span>(<span class="kw">dds</span>, contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"case"</span>, <span class="st">"LOAD"</span>, <span class="st">"control"</span>), alpha = <span class="fl">0.01</span>)
 
 <span class="co">## Make a volcano plot</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/federicomarini/ideal">"ideal"</a></span>)
@@ -1009,9 +1031,11 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <div class="sourceCode" id="cb118"><pre class="downlit">
 <span class="co">## Make a report with the results</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/leekgroup/regionReport">"regionReport"</a></span>)
-<span class="fu"><a href="https://rdrr.io/pkg/regionReport/man/DESeq2Report.html">DESeq2Report</a></span>(<span class="kw">dds</span>, res = <span class="kw">res</span>, project = <span class="st">"SRP056604"</span>,
+<span class="fu"><a href="https://rdrr.io/pkg/regionReport/man/DESeq2Report.html">DESeq2Report</a></span>(<span class="kw">dds</span>,
+    res = <span class="kw">res</span>, project = <span class="st">"SRP056604"</span>,
     intgroup = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"sex"</span>, <span class="st">"case"</span>), outdir = <span class="st">"."</span>,
-    output = <span class="st">"SRP056604_main-results"</span>)
+    output = <span class="st">"SRP056604_main-results"</span>
+)
 </pre></div>
 <p>If the report does not open automatically, we can open it with <code><a href="https://rdrr.io/r/utils/browseURL.html">browseURL()</a></code>.</p>
 <div class="sourceCode" id="cb119"><pre class="downlit">
@@ -1042,10 +1066,12 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <div class="sourceCode" id="cb124"><pre class="downlit">
 <span class="co">## Perform enrichment analysis for Biological Process (BP)</span>
 <span class="co">## Note that the argument is keytype instead of keyType in Bioconductor 3.5</span>
-<span class="kw">enrich_go</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/clusterProfiler/man/enrichGO.html">enrichGO</a></span>(gene = <span class="kw">ensembl</span>[<span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="kw">res</span><span class="op">$</span><span class="kw">padj</span> <span class="op">&lt;</span> <span class="fl">0.05</span>)],
+<span class="kw">enrich_go</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/clusterProfiler/man/enrichGO.html">enrichGO</a></span>(
+    gene = <span class="kw">ensembl</span>[<span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="kw">res</span><span class="op">$</span><span class="kw">padj</span> <span class="op">&lt;</span> <span class="fl">0.05</span>)],
     OrgDb = <span class="kw">org.Hs.eg.db</span>, keyType = <span class="st">"ENSEMBL"</span>, ont = <span class="st">"BP"</span>,
     pAdjustMethod = <span class="st">"BH"</span>, pvalueCutoff = <span class="fl">0.01</span>, qvalueCutoff = <span class="fl">0.05</span>,
-    universe = <span class="kw">ensembl</span>[<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">res</span><span class="op">$</span><span class="kw">padj</span>)])
+    universe = <span class="kw">ensembl</span>[<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">res</span><span class="op">$</span><span class="kw">padj</span>)]
+)
 
 <span class="co">## Visualize enrichment results</span>
 <span class="fu"><a href="https://rdrr.io/pkg/enrichplot/man/dotplot.html">dotplot</a></span>(<span class="kw">enrich_go</span>)
@@ -1059,11 +1085,11 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <p>Since we noticed that the sex predictions and the reported sex do not match for half of the samples, we can check if there are any genes associated with whether the sex matched.</p>
 <div class="sourceCode" id="cb125"><pre class="downlit">
 <span class="co">## DE analysis checking what genes are different by matching sex</span>
-<span class="kw">dds2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSet</a></span>(<span class="kw">rse_gene_scaled</span>, <span class="op">~</span> <span class="kw">matching_sex</span>)
+<span class="kw">dds2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeqDataSet.html">DESeqDataSet</a></span>(<span class="kw">rse_gene_scaled</span>, <span class="op">~</span><span class="kw">matching_sex</span>)
 </pre></div>
 <pre><code>## converting counts to integer mode</code></pre>
 <div class="sourceCode" id="cb127"><pre class="downlit">
-<span class="kw">dds2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span>(<span class="kw">dds2</span>, test = <span class="st">"LRT"</span>, reduced = <span class="op">~</span> <span class="fl">1</span>, fitType = <span class="st">"local"</span>)
+<span class="kw">dds2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span>(<span class="kw">dds2</span>, test = <span class="st">"LRT"</span>, reduced = <span class="op">~</span><span class="fl">1</span>, fitType = <span class="st">"local"</span>)
 </pre></div>
 <pre><code>## estimating size factors</code></pre>
 <pre><code>## estimating dispersions</code></pre>
@@ -1075,7 +1101,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="kw">res2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span>(<span class="kw">dds2</span>, alpha = <span class="fl">0.01</span>)
 
 <span class="co">## Visually inspect results</span>
-<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotMA.html">plotMA</a></span>(<span class="kw">res2</span>, main=<span class="st">"DESeq2 results for SRP056604 - sex predictions"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotMA.html">plotMA</a></span>(<span class="kw">res2</span>, main = <span class="st">"DESeq2 results for SRP056604 - sex predictions"</span>)
 </pre></div>
 <p><img src="recount-workshop_files/figure-html/secondary%20analysis-1.png" width="100%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb135"><pre class="downlit">
@@ -1126,9 +1152,11 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <p><img src="recount-workshop_files/figure-html/secondary%20analysis-2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>We can create a report just like before.</p>
 <div class="sourceCode" id="cb139"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/pkg/regionReport/man/DESeq2Report.html">DESeq2Report</a></span>(<span class="kw">dds2</span>, res = <span class="kw">res2</span>, project = <span class="st">"SRP056604 - matching sex"</span>,
+<span class="fu"><a href="https://rdrr.io/pkg/regionReport/man/DESeq2Report.html">DESeq2Report</a></span>(<span class="kw">dds2</span>,
+    res = <span class="kw">res2</span>, project = <span class="st">"SRP056604 - matching sex"</span>,
     intgroup = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"sex"</span>, <span class="st">"predicted_sex"</span>), outdir = <span class="st">"."</span>,
-    output = <span class="st">"SRP056604_sex-predictions"</span>)
+    output = <span class="st">"SRP056604_sex-predictions"</span>
+)
 </pre></div>
 <p>Checking the chromosome of the DE genes by matching sex status shows that most of these genes are not in chromosomes X and Y as shown below.</p>
 <div class="sourceCode" id="cb140"><pre class="downlit">
@@ -1152,7 +1180,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <p>Below we repeat the gene level analysis for the disjoint exon data. We first download the exon data, add the expanded metadata we constructed for the gene analysis, and then perform the differential expression analysis using <code>limma-voom</code>.</p>
 <div class="sourceCode" id="cb142"><pre class="downlit">
 <span class="co">## Download the data if it is not there</span>
-<span class="co">if</span>(<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw">local_path</span>, <span class="st">"rse_exon.Rdata"</span>))) {
+<span class="co">if</span> (<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="kw">local_path</span>, <span class="st">"rse_exon.Rdata"</span>))) {
     <span class="co">## In case you decide to download the data instead of using the</span>
     <span class="co">## pre-installed data</span>
     <span class="kw">local_path</span> <span class="op">&lt;-</span> <span class="st">"SRP056604"</span>
@@ -1200,8 +1228,10 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##   to improve GLM convergence.</code></pre>
 <div class="sourceCode" id="cb150"><pre class="downlit">
 <span class="co">## Perform DE analysis</span>
-<span class="kw">dds_exon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span>(<span class="kw">dds_exon</span>, test = <span class="st">"LRT"</span>, reduced = <span class="op">~</span> <span class="kw">sex</span> <span class="op">+</span> <span class="kw">age</span> <span class="op">+</span> <span class="kw">pmi</span>,
-    fitType = <span class="st">"local"</span>)
+<span class="kw">dds_exon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span>(<span class="kw">dds_exon</span>,
+    test = <span class="st">"LRT"</span>, reduced = <span class="op">~</span> <span class="kw">sex</span> <span class="op">+</span> <span class="kw">age</span> <span class="op">+</span> <span class="kw">pmi</span>,
+    fitType = <span class="st">"local"</span>
+)
 </pre></div>
 <pre><code>## estimating size factors</code></pre>
 <pre><code>## estimating dispersions</code></pre>
@@ -1210,12 +1240,16 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <pre><code>## final dispersion estimates</code></pre>
 <pre><code>## fitting model and testing</code></pre>
 <div class="sourceCode" id="cb157"><pre class="downlit">
-<span class="kw">res_exon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span>(<span class="kw">dds_exon</span>, contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'case'</span>, <span class="st">'LOAD'</span>, <span class="st">'control'</span>),
-    alpha = <span class="fl">0.01</span>)
+<span class="kw">res_exon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span>(<span class="kw">dds_exon</span>,
+    contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"case"</span>, <span class="st">"LOAD"</span>, <span class="st">"control"</span>),
+    alpha = <span class="fl">0.01</span>
+)
 
 <span class="co">## Explore results</span>
-<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotMA.html">plotMA</a></span>(<span class="kw">dds_exon</span>, main=<span class="st">"DESeq2 results for SRP056604 -exon level"</span>,
-    contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'case'</span>, <span class="st">'LOAD'</span>, <span class="st">'control'</span>), alpha = <span class="fl">0.01</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotMA.html">plotMA</a></span>(<span class="kw">dds_exon</span>,
+    main = <span class="st">"DESeq2 results for SRP056604 -exon level"</span>,
+    contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"case"</span>, <span class="st">"LOAD"</span>, <span class="st">"control"</span>), alpha = <span class="fl">0.01</span>
+)
 </pre></div>
 <p><img src="recount-workshop_files/figure-html/exon_de_analysis-1.png" width="100%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb158"><pre class="downlit">
@@ -1232,7 +1266,8 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="co">## Make a venn diagram</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/talgalili/gplots">"gplots"</a></span>)
 <span class="kw">vinfo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gplots/man/venn.html">venn</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"genes"</span> = <span class="kw">genes_de</span>, <span class="st">"exons"</span> = <span class="kw">genes_w_de_exon</span>),
-    names = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"genes"</span>, <span class="st">"exons"</span>), show.plot = <span class="fl">FALSE</span>) 
+    names = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"genes"</span>, <span class="st">"exons"</span>), show.plot = <span class="fl">FALSE</span>
+)
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">vinfo</span>) <span class="op">+</span>
     <span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span>(<span class="st">"Genes with DE signal: at the gene and exon levels"</span>)
 </pre></div>
@@ -1242,26 +1277,36 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <p>This was just a quick example of how we can perform differential expression analyses at the gene and exon feature levels. We envision that more involved pipelines could be developed that leverage both feature levels such as in Jaffe at al., 2018 <span class="citation">(25)</span>. For instance, we could focus on the differentially expressed genes with at least one differentially expressed exon and compare the direction of the DE signal versus the gene level signal as shown below.</p>
 <div class="sourceCode" id="cb161"><pre class="downlit">
 <span class="co">## Keep only the DE exons that are from a gene that is also DE</span>
-<span class="kw">top_exon_de</span> <span class="op">&lt;-</span> <span class="kw">res_exon</span>[<span class="fu"><a href="https://rdrr.io/pkg/GenomicRanges/man/setops-methods.html">intersect</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="kw">res_exon</span><span class="op">$</span><span class="kw">padj</span> <span class="op">&lt;</span> <span class="fl">0.01</span>),
-    <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="fu">rowRanges</span>(<span class="kw">rse_e</span>)<span class="op">$</span><span class="kw">gene_id</span> <span class="op">%in%</span> 
-    <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span>(<span class="kw">vinfo</span>, <span class="st">"intersections"</span>)[[<span class="st">"genes:exons"</span>]])), ]
+<span class="kw">top_exon_de</span> <span class="op">&lt;-</span> <span class="kw">res_exon</span>[<span class="fu"><a href="https://rdrr.io/pkg/GenomicRanges/man/setops-methods.html">intersect</a></span>(
+    <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="kw">res_exon</span><span class="op">$</span><span class="kw">padj</span> <span class="op">&lt;</span> <span class="fl">0.01</span>),
+    <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="fu">rowRanges</span>(<span class="kw">rse_e</span>)<span class="op">$</span><span class="kw">gene_id</span> <span class="op">%in%</span>
+        <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span>(<span class="kw">vinfo</span>, <span class="st">"intersections"</span>)[[<span class="st">"genes:exons"</span>]])
+), ]
 <span class="co">## Add the gene id</span>
-<span class="kw">top_exon_de</span><span class="op">$</span><span class="kw">gene_id</span> <span class="op">&lt;-</span> <span class="fu">rowRanges</span>(<span class="kw">rse_e</span>)<span class="op">$</span><span class="kw">gene_id</span>[<span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="kw">top_exon_de</span>),
-    <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="kw">rse_e</span>))]
-    
+<span class="kw">top_exon_de</span><span class="op">$</span><span class="kw">gene_id</span> <span class="op">&lt;-</span> <span class="fu">rowRanges</span>(<span class="kw">rse_e</span>)<span class="op">$</span><span class="kw">gene_id</span>[<span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span>(
+    <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="kw">top_exon_de</span>),
+    <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="kw">rse_e</span>)
+)]
+
 <span class="co">## Find the fold change that is the most extreme among the DE exons of a gene</span>
-<span class="kw">exon_max_fc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span>(<span class="kw">top_exon_de</span><span class="op">$</span><span class="kw">log2FoldChange</span>, <span class="kw">top_exon_de</span><span class="op">$</span><span class="kw">gene_id</span>,
-    <span class="fu">function</span>(<span class="kw">x</span>) { <span class="kw">x</span>[<span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw">x</span>))] })
+<span class="kw">exon_max_fc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tapply.html">tapply</a></span>(
+    <span class="kw">top_exon_de</span><span class="op">$</span><span class="kw">log2FoldChange</span>, <span class="kw">top_exon_de</span><span class="op">$</span><span class="kw">gene_id</span>,
+    <span class="fu">function</span>(<span class="kw">x</span>) {
+        <span class="kw">x</span>[<span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw">x</span>))]
+    }
+)
 
 <span class="co">## Keep only the DE genes that match the previous selection</span>
 <span class="kw">top_gene_de</span> <span class="op">&lt;-</span> <span class="kw">res</span>[<span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">exon_max_fc</span>), <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="kw">res</span>)), ]
 
 <span class="co">## Make the plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">top_gene_de</span><span class="op">$</span><span class="kw">log2FoldChange</span>, <span class="kw">exon_max_fc</span>, pch = <span class="fl">20</span>,
-    col = <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span>(<span class="st">"black"</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">2</span>),
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">top_gene_de</span><span class="op">$</span><span class="kw">log2FoldChange</span>, <span class="kw">exon_max_fc</span>,
+    pch = <span class="fl">20</span>,
+    col = <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span>(<span class="st">"black"</span>, <span class="fl">1</span> <span class="op">/</span> <span class="fl">2</span>),
     ylab = <span class="st">"Most extreme log FC at the exon level among DE exons"</span>,
     xlab = <span class="st">"Log fold change (FC) at the gene level"</span>,
-    main = <span class="st">"DE genes with at least one DE exon"</span>)
+    main = <span class="st">"DE genes with at least one DE exon"</span>
+)
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(a = <span class="fl">0</span>, b = <span class="fl">1</span>, col = <span class="st">"red"</span>)
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(h = <span class="fl">0</span>, col = <span class="st">"grey80"</span>)
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span>(v = <span class="fl">0</span>, col = <span class="st">"grey80"</span>)
@@ -1276,7 +1321,8 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <p>For illustrative purposes, we will use the data from chromosome 12 for the SRP056604 project. We chose chromosome 12 based on the number of DE genes per chromosome</p>
 <div class="sourceCode" id="cb162"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="fu">seqnames</span>(<span class="fu">rowRanges</span>(<span class="kw">rse_gene_scaled</span>)[<span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="kw">res</span><span class="op">$</span><span class="kw">padj</span> <span class="op">&lt;</span> <span class="fl">0.01</span>)])),
-    decreasing = <span class="fl">TRUE</span>)
+    decreasing = <span class="fl">TRUE</span>
+)
 </pre></div>
 <pre><code>## 
 ##  chr1  chr7 chr12  chrM  chr6 chr15  chr2 chr17 chr11 chr14 chr19  chr4  chr5 
@@ -1286,17 +1332,19 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <p>First, we obtain the expressed regions using a relatively high mean cutoff of 5. We then filter the regions to keep only the ones longer than 100 base-pairs to shorten the time needed for running <code><a href="https://rdrr.io/pkg/recount/man/coverage_matrix.html">coverage_matrix()</a></code>.</p>
 <div class="sourceCode" id="cb164"><pre class="downlit">
 <span class="co">## Define expressed regions for study SRP056604, only for chromosome 12</span>
-<span class="kw">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/expressed_regions.html">expressed_regions</a></span>(<span class="st">"SRP056604"</span>, <span class="st">"chr12"</span>, cutoff = <span class="fl">5L</span>,
-    maxClusterGap = <span class="fl">3000L</span>, outdir = <span class="kw">local_path</span>)
+<span class="kw">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/expressed_regions.html">expressed_regions</a></span>(<span class="st">"SRP056604"</span>, <span class="st">"chr12"</span>,
+    cutoff = <span class="fl">5L</span>,
+    maxClusterGap = <span class="fl">3000L</span>, outdir = <span class="kw">local_path</span>
+)
 </pre></div>
-<pre><code>## 2020-07-26 19:40:10 loadCoverage: loading BigWig file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/mean_SRP056604.bw</code></pre>
-<pre><code>## 2020-07-26 19:40:21 loadCoverage: applying the cutoff to the merged data</code></pre>
-<pre><code>## 2020-07-26 19:40:56 filterData: originally there were 133275309 rows, now there are 133275309 rows. Meaning that 0 percent was filtered.</code></pre>
-<pre><code>## 2020-07-26 19:40:56 findRegions: identifying potential segments</code></pre>
-<pre><code>## 2020-07-26 19:40:56 findRegions: segmenting information</code></pre>
-<pre><code>## 2020-07-26 19:40:56 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
-<pre><code>## 2020-07-26 19:41:05 findRegions: identifying candidate regions</code></pre>
-<pre><code>## 2020-07-26 19:41:05 findRegions: identifying region clusters</code></pre>
+<pre><code>## 2020-07-26 21:28:23 loadCoverage: loading BigWig file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/mean_SRP056604.bw</code></pre>
+<pre><code>## 2020-07-26 21:28:33 loadCoverage: applying the cutoff to the merged data</code></pre>
+<pre><code>## 2020-07-26 21:29:06 filterData: originally there were 133275309 rows, now there are 133275309 rows. Meaning that 0 percent was filtered.</code></pre>
+<pre><code>## 2020-07-26 21:29:06 findRegions: identifying potential segments</code></pre>
+<pre><code>## 2020-07-26 21:29:06 findRegions: segmenting information</code></pre>
+<pre><code>## 2020-07-26 21:29:06 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
+<pre><code>## 2020-07-26 21:29:14 findRegions: identifying candidate regions</code></pre>
+<pre><code>## 2020-07-26 21:29:14 findRegions: identifying region clusters</code></pre>
 <div class="sourceCode" id="cb173"><pre class="downlit">
 <span class="co">## Explore the resulting expressed regions</span>
 <span class="kw">regions</span>
@@ -1353,20 +1401,21 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="co">## Takes about 45 seconds with local data</span>
 <span class="co">## and about 70 seconds with data from the web (outdir = NULL)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span>(<span class="kw">rse_er</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/coverage_matrix.html">coverage_matrix</a></span>(<span class="st">"SRP056604"</span>, <span class="st">"chr12"</span>, <span class="kw">regions</span>,
-    chunksize = <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">regions</span>), outdir = <span class="kw">local_path</span>, round = <span class="fl">TRUE</span>))
+    chunksize = <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">regions</span>), outdir = <span class="kw">local_path</span>, round = <span class="fl">TRUE</span>
+))
 </pre></div>
-<pre><code>## 2020-07-26 19:41:13 downloading file SRP056604.tsv to /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604</code></pre>
-<pre><code>## 2020-07-26 19:41:14 railMatrix: processing regions 1 to 22950</code></pre>
-<pre><code>## 2020-07-26 19:41:14 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931819.bw</code></pre>
-<pre><code>## 2020-07-26 19:41:17 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931818.bw</code></pre>
-<pre><code>## 2020-07-26 19:41:20 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931817.bw</code></pre>
-<pre><code>## 2020-07-26 19:41:23 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931816.bw</code></pre>
-<pre><code>## 2020-07-26 19:41:26 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931815.bw</code></pre>
-<pre><code>## 2020-07-26 19:41:29 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931814.bw</code></pre>
-<pre><code>## 2020-07-26 19:41:32 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931813.bw</code></pre>
-<pre><code>## 2020-07-26 19:41:36 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931812.bw</code></pre>
+<pre><code>## 2020-07-26 21:29:21 downloading file SRP056604.tsv to /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604</code></pre>
+<pre><code>## 2020-07-26 21:29:22 railMatrix: processing regions 1 to 22950</code></pre>
+<pre><code>## 2020-07-26 21:29:22 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931819.bw</code></pre>
+<pre><code>## 2020-07-26 21:29:25 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931818.bw</code></pre>
+<pre><code>## 2020-07-26 21:29:28 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931817.bw</code></pre>
+<pre><code>## 2020-07-26 21:29:31 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931816.bw</code></pre>
+<pre><code>## 2020-07-26 21:29:33 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931815.bw</code></pre>
+<pre><code>## 2020-07-26 21:29:36 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931814.bw</code></pre>
+<pre><code>## 2020-07-26 21:29:39 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931813.bw</code></pre>
+<pre><code>## 2020-07-26 21:29:42 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931812.bw</code></pre>
 <pre><code>##    user  system elapsed 
-##  23.408   1.757  26.394</code></pre>
+##  21.710   1.415  23.841</code></pre>
 <div class="sourceCode" id="cb193"><pre class="downlit">
 <span class="co">## Use the expanded metadata we built for the gene model</span>
 <span class="fu">colData</span>(<span class="kw">rse_er</span>) <span class="op">&lt;-</span> <span class="fu">colData</span>(<span class="kw">rse_gene_scaled</span>)
@@ -1386,8 +1435,10 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 ##   it is generally a good idea to center and scale numeric variables in the design
 ##   to improve GLM convergence.</code></pre>
 <div class="sourceCode" id="cb198"><pre class="downlit">
-<span class="kw">dds_er</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span>(<span class="kw">dds_er</span>, test = <span class="st">"LRT"</span>, reduced = <span class="op">~</span> <span class="kw">sex</span> <span class="op">+</span> <span class="kw">age</span> <span class="op">+</span> <span class="kw">pmi</span>,
-    fitType = <span class="st">"local"</span>)
+<span class="kw">dds_er</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/DESeq.html">DESeq</a></span>(<span class="kw">dds_er</span>,
+    test = <span class="st">"LRT"</span>, reduced = <span class="op">~</span> <span class="kw">sex</span> <span class="op">+</span> <span class="kw">age</span> <span class="op">+</span> <span class="kw">pmi</span>,
+    fitType = <span class="st">"local"</span>
+)
 </pre></div>
 <pre><code>## estimating size factors</code></pre>
 <pre><code>## estimating dispersions</code></pre>
@@ -1396,11 +1447,13 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <pre><code>## final dispersion estimates</code></pre>
 <pre><code>## fitting model and testing</code></pre>
 <div class="sourceCode" id="cb205"><pre class="downlit">
-<span class="kw">res_er</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span>(<span class="kw">dds_er</span>, alpha = <span class="fl">0.05</span>, contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'case'</span>, <span class="st">'LOAD'</span>, <span class="st">'control'</span>))
+<span class="kw">res_er</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/results.html">results</a></span>(<span class="kw">dds_er</span>, alpha = <span class="fl">0.05</span>, contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"case"</span>, <span class="st">"LOAD"</span>, <span class="st">"control"</span>))
 
 <span class="co">## Visually inspect results</span>
-<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotMA.html">plotMA</a></span>(<span class="kw">res_er</span>, main=<span class="st">"DESeq2 results for SRP056604 - DERs"</span>,
-    contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'case'</span>, <span class="st">'LOAD'</span>, <span class="st">'control'</span>), alpha = <span class="fl">0.05</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/DESeq2/man/plotMA.html">plotMA</a></span>(<span class="kw">res_er</span>,
+    main = <span class="st">"DESeq2 results for SRP056604 - DERs"</span>,
+    contrast = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"case"</span>, <span class="st">"LOAD"</span>, <span class="st">"control"</span>), alpha = <span class="fl">0.05</span>
+)
 </pre></div>
 <pre><code>## Warning in plot.window(...): "contrast" is not a graphical parameter</code></pre>
 <pre><code>## Warning in plot.xy(xy, type, ...): "contrast" is not a graphical parameter</code></pre>
@@ -1418,9 +1471,11 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <p><img src="recount-workshop_files/figure-html/er_de_analysis-2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>We can also create a report, just like before.</p>
 <div class="sourceCode" id="cb212"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/pkg/regionReport/man/DESeq2Report.html">DESeq2Report</a></span>(<span class="kw">dds_er</span>, res = <span class="kw">res_er</span>, project = <span class="st">"SRP056604 - DERs"</span>,
+<span class="fu"><a href="https://rdrr.io/pkg/regionReport/man/DESeq2Report.html">DESeq2Report</a></span>(<span class="kw">dds_er</span>,
+    res = <span class="kw">res_er</span>, project = <span class="st">"SRP056604 - DERs"</span>,
     intgroup = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"sex"</span>, <span class="st">"case"</span>), outdir = <span class="st">"."</span>,
-    output = <span class="st">"SRP056604_DERs"</span>)
+    output = <span class="st">"SRP056604_DERs"</span>
+)
 </pre></div>
 <p>Having identified the differentially expressed regions (DERs), we can sort all regions by their adjusted p-value.</p>
 <div class="sourceCode" id="cb213"><pre class="downlit">
@@ -1476,12 +1531,16 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="co">## /bw/</span>
 <span class="co">## sample run id</span>
 <span class="co">## .bw</span>
-<span class="kw">bws_web</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"http://duffel.rail.bio/recount/SRP056604/bw/"</span>,
-    <span class="fu">colData</span>(<span class="kw">rse_er</span>)<span class="op">$</span><span class="kw">bigwig_file</span>)
+<span class="kw">bws_web</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(
+    <span class="st">"http://duffel.rail.bio/recount/SRP056604/bw/"</span>,
+    <span class="fu">colData</span>(<span class="kw">rse_er</span>)<span class="op">$</span><span class="kw">bigwig_file</span>
+)
 
 <span class="co">## Note that they are also present in the recount_url data.frame</span>
-<span class="kw">bws_url</span> <span class="op">&lt;-</span> <span class="kw">recount_url</span><span class="op">$</span><span class="kw">url</span>[<span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span>(<span class="fu">colData</span>(<span class="kw">rse_er</span>)<span class="op">$</span><span class="kw">bigwig_file</span>,
-    <span class="kw">recount_url</span><span class="op">$</span><span class="kw">file_name</span>)]
+<span class="kw">bws_url</span> <span class="op">&lt;-</span> <span class="kw">recount_url</span><span class="op">$</span><span class="kw">url</span>[<span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span>(
+    <span class="fu">colData</span>(<span class="kw">rse_er</span>)<span class="op">$</span><span class="kw">bigwig_file</span>,
+    <span class="kw">recount_url</span><span class="op">$</span><span class="kw">file_name</span>
+)]
 <span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="kw">bws_web</span>, <span class="kw">bws_url</span>)
 </pre></div>
 <pre><code>## [1] TRUE</code></pre>
@@ -1499,15 +1558,19 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <div class="sourceCode" id="cb222"><pre class="downlit">
 <span class="co">## Add 100 bp padding on each side</span>
 <span class="kw">regions_resized</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicRanges/man/intra-range-methods.html">resize</a></span>(<span class="kw">regions_by_padj</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>],
-    <span class="fu">width</span>(<span class="kw">regions_by_padj</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]) <span class="op">+</span> <span class="fl">200</span>, fix = <span class="st">"center"</span>)
+    <span class="fu">width</span>(<span class="kw">regions_by_padj</span>[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]) <span class="op">+</span> <span class="fl">200</span>,
+    fix = <span class="st">"center"</span>
+)
 </pre></div>
 <p>Next, we obtain the base-pair coverage data for each DER and scale the data to a library size of 40 million 100 base-pair reads using the coverage AUC information we have in the metadata.</p>
 <div class="sourceCode" id="cb223"><pre class="downlit">
 <span class="co">## Get the bp coverage data for the plots</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/lcolladotor/derfinder">"derfinder"</a></span>)
-<span class="kw">regionCov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/derfinder/man/getRegionCoverage.html">getRegionCoverage</a></span>(regions = <span class="kw">regions_resized</span>, files = <span class="kw">bws</span>,
+<span class="kw">regionCov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/derfinder/man/getRegionCoverage.html">getRegionCoverage</a></span>(
+    regions = <span class="kw">regions_resized</span>, files = <span class="kw">bws</span>,
     targetSize = <span class="fl">40</span> <span class="op">*</span> <span class="fl">1e6</span> <span class="op">*</span> <span class="fl">100</span>, totalMapped = <span class="fu">colData</span>(<span class="kw">rse_er</span>)<span class="op">$</span><span class="kw">auc</span>,
-    verbose = <span class="fl">FALSE</span>)
+    verbose = <span class="fl">FALSE</span>
+)
 </pre></div>
 <p>The function <code><a href="https://rdrr.io/pkg/derfinderPlot/man/plotRegionCoverage.html">plotRegionCoverage()</a></code> requires several pieces of annotation information for the plots that use a TxDb object. For recount2 we used Gencode v25 hg38’s annotation, which means that we need to process it manually instead of using a pre-computed TxDb package.</p>
 <p>To create a TxDb object for Gencode v25, this can take several lines of code and to simplify this process we created the <code>GenomicState</code> package which provides processed annotation files for Gencode that can be easily used with <code>derfinder</code> and other Bioconductor packages. <code>GenomicState</code> is powered by <code>AnnotationHub</code> and thus uses similar syntax to it. Although years later, we created <code>GenomicState</code> in response to a comment from one of the reviewers of the <code>recountWorkflow</code> paper.</p>
@@ -1515,11 +1578,12 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="co">## Get the chromosome information for hg38</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/LieberInstitute/GenomicState">"GenomicState"</a></span>)
 <span class="kw">gencode_v25_hg38_txdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicState/man/GenomicStateHub.html">GenomicStateHub</a></span>(
-  version = <span class="st">"25"</span>,
-  genome = <span class="st">"hg38"</span>,
-  filetype = <span class="st">"TxDb"</span>)[[<span class="fl">1</span>]]
+    version = <span class="st">"25"</span>,
+    genome = <span class="st">"hg38"</span>,
+    filetype = <span class="st">"TxDb"</span>
+)[[<span class="fl">1</span>]]
 </pre></div>
-<pre><code>## using temporary cache /tmp/Rtmp1F61KK/BiocFileCache</code></pre>
+<pre><code>## using temporary cache /tmp/RtmpKDI1FD/BiocFileCache</code></pre>
 <pre><code>## snapshotDate(): 2020-07-20</code></pre>
 <pre><code>## downloading 1 resources</code></pre>
 <pre><code>## retrieving 1 resource</code></pre>
@@ -1549,9 +1613,10 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="co">## Download annotated transcripts for gencode v25 based on the TxDb object</span>
 <span class="co">## we built previously.</span>
 <span class="kw">ann_gencode_v25_hg38</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicState/man/GenomicStateHub.html">GenomicStateHub</a></span>(
-  version = <span class="st">"25"</span>,
-  genome = <span class="st">"hg38"</span>,
-  filetype = <span class="st">"AnnotatedGenes"</span>)[[<span class="fl">1</span>]]
+    version = <span class="st">"25"</span>,
+    genome = <span class="st">"hg38"</span>,
+    filetype = <span class="st">"AnnotatedGenes"</span>
+)[[<span class="fl">1</span>]]
 </pre></div>
 <pre><code>## snapshotDate(): 2020-07-20</code></pre>
 <pre><code>## downloading 1 resources</code></pre>
@@ -1567,9 +1632,10 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <div class="sourceCode" id="cb238"><pre class="downlit">
 <span class="co">## Download the genomic state object using the gencode TxDb object</span>
 <span class="kw">gs_gencode_v25_hg38</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicState/man/GenomicStateHub.html">GenomicStateHub</a></span>(
-  version = <span class="st">"25"</span>,
-  genome = <span class="st">"hg38"</span>,
-  filetype = <span class="st">"GenomicState"</span>)[[<span class="fl">1</span>]]
+    version = <span class="st">"25"</span>,
+    genome = <span class="st">"hg38"</span>,
+    filetype = <span class="st">"GenomicState"</span>
+)[[<span class="fl">1</span>]]
 </pre></div>
 <pre><code>## snapshotDate(): 2020-07-20</code></pre>
 <pre><code>## downloading 1 resources</code></pre>
@@ -1577,21 +1643,25 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <pre><code>## loading from cache</code></pre>
 <div class="sourceCode" id="cb243"><pre class="downlit">
 <span class="co">## Annotate the original regions</span>
-<span class="kw">regions_ann</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/derfinder/man/annotateRegions.html">annotateRegions</a></span>(<span class="kw">regions_resized</span>,
-    <span class="kw">gs_gencode_v25_hg38</span><span class="op">$</span><span class="kw">fullGenome</span>)
+<span class="kw">regions_ann</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/derfinder/man/annotateRegions.html">annotateRegions</a></span>(
+    <span class="kw">regions_resized</span>,
+    <span class="kw">gs_gencode_v25_hg38</span><span class="op">$</span><span class="kw">fullGenome</span>
+)
 </pre></div>
-<pre><code>## 2020-07-26 19:42:26 annotateRegions: counting</code></pre>
-<pre><code>## 2020-07-26 19:42:27 annotateRegions: annotating</code></pre>
+<pre><code>## 2020-07-26 21:30:30 annotateRegions: counting</code></pre>
+<pre><code>## 2020-07-26 21:30:31 annotateRegions: annotating</code></pre>
 <p>We can finally use <code><a href="https://rdrr.io/pkg/derfinderPlot/man/plotRegionCoverage.html">plotRegionCoverage()</a></code> to visualize the top 10 regions coloring by whether they are LOAD or control samples. Known exons are shown in dark blue, introns in light blue.</p>
 <div class="sourceCode" id="cb246"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/leekgroup/derfinderPlot">"derfinderPlot"</a></span>)
-<span class="fu"><a href="https://rdrr.io/pkg/derfinderPlot/man/plotRegionCoverage.html">plotRegionCoverage</a></span>(regions = <span class="kw">regions_resized</span>, regionCoverage = <span class="kw">regionCov</span>, 
-   groupInfo = <span class="fu">colData</span>(<span class="kw">rse_er</span>)<span class="op">$</span><span class="kw">case</span>,
-   nearestAnnotation = <span class="kw">nearest_ann</span>, 
-   annotatedRegions = <span class="kw">regions_ann</span>,
-   txdb = <span class="kw">gencode_v25_hg38_txdb</span>,
-   scalefac = <span class="fl">1</span>, ylab = <span class="st">"Coverage (RP40M, 100bp)"</span>,
-   ask = <span class="fl">FALSE</span>, verbose = <span class="fl">FALSE</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/derfinderPlot/man/plotRegionCoverage.html">plotRegionCoverage</a></span>(
+    regions = <span class="kw">regions_resized</span>, regionCoverage = <span class="kw">regionCov</span>,
+    groupInfo = <span class="fu">colData</span>(<span class="kw">rse_er</span>)<span class="op">$</span><span class="kw">case</span>,
+    nearestAnnotation = <span class="kw">nearest_ann</span>,
+    annotatedRegions = <span class="kw">regions_ann</span>,
+    txdb = <span class="kw">gencode_v25_hg38_txdb</span>,
+    scalefac = <span class="fl">1</span>, ylab = <span class="st">"Coverage (RP40M, 100bp)"</span>,
+    ask = <span class="fl">FALSE</span>, verbose = <span class="fl">FALSE</span>
+)
 </pre></div>
 <p><img src="recount-workshop_files/figure-html/region_plots-1.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-2.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-3.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-4.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-5.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-6.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-7.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-8.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-9.png" width="100%" style="display: block; margin: auto;"><img src="recount-workshop_files/figure-html/region_plots-10.png" width="100%" style="display: block; margin: auto;"></p>
 <p>In the previous plots we can see that some DERs are longer than known exons, others match known exons, and some are un-annotated expressed regions.</p>
@@ -1615,7 +1685,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span>()[<span class="fl">3</span>] <span class="op">/</span> <span class="fl">60</span>, <span class="fl">1</span>)
 </pre></div>
 <pre><code>## elapsed 
-##     7.4</code></pre>
+##     6.9</code></pre>
 <div class="sourceCode" id="cb251"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(width = <span class="fl">100</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/r-lib/sessioninfo#readme">"sessioninfo"</a></span>)
