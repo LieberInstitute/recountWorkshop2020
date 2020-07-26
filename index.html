@@ -63,7 +63,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/recount-workshop.html">Using the recount2 resource and related tools</a>
+      <a href="articles/recount-workshop.html">Human RNA-seq data from recount2 and related packages</a>
     </li>
   </ul>
 </li>
@@ -91,13 +91,76 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="human-rna-seq-data-from-recount2-and-related-packages" class="section level1">
+<div id="recountworkshop2020" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#human-rna-seq-data-from-recount2-and-related-packages" class="anchor"></a>Human RNA-seq data from recount2 and related packages</h1></div>
+<a href="#recountworkshop2020" class="anchor"></a>recountWorkshop2020</h1></div>
+<!-- badges: start -->
+
+<p>The goal of <code>recountWorkshop2020</code> is to …</p>
+<div id="installation-instructions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation-instructions" class="anchor"></a>Installation instructions</h2>
+<p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/">CRAN</a>. Then install <code>recountWorkshop2020</code> using from <a href="https://github.com/">GitHub</a> with the following code:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co">if</span> (<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span>(<span class="st">"BiocManager"</span>, quietly = <span class="fl">TRUE</span>)) {
+    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"BiocManager"</span>)
+}
+
+<span class="kw">BiocManager</span>::<span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"LieberInstitute/recountWorkshop2020"</span>)
+</pre></div>
 </div>
-<div id="instructor" class="section level1">
+<div id="citation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#citation" class="anchor"></a>Citation</h2>
+<p>Below is the citation output from using <code>citation('recount</code> in R. Please run this yourself to check for any updates on how to cite <strong>recount</strong>.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span>(<span class="st">'recount'</span>)[<span class="fl">2</span>], bibtex = <span class="fl">TRUE</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Collado-Torres L, Nellore A, Jaffe AE (2017). "recount workflow:</span>
+<span class="co">#&gt; Accessing over 70,000 human RNA-seq samples with Bioconductor [version</span>
+<span class="co">#&gt; 1; referees: 1 approved, 2 approved with reservations]."</span>
+<span class="co">#&gt; _F1000Research_. doi: 10.12688/f1000research.12223.1 (URL:</span>
+<span class="co">#&gt; https://doi.org/10.12688/f1000research.12223.1), &lt;URL:</span>
+<span class="co">#&gt; https://f1000research.com/articles/6-1558/v1&gt;.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   @Article{,</span>
+<span class="co">#&gt;     title = {recount workflow: Accessing over 70,000 human RNA-seq samples with Bioconductor [version 1; referees: 1 approved, 2 approved with reservations]},</span>
+<span class="co">#&gt;     author = {Leonardo Collado-Torres and Abhinav Nellore and Andrew E. Jaffe},</span>
+<span class="co">#&gt;     year = {2017},</span>
+<span class="co">#&gt;     journal = {F1000Research},</span>
+<span class="co">#&gt;     doi = {10.12688/f1000research.12223.1},</span>
+<span class="co">#&gt;     url = {https://f1000research.com/articles/6-1558/v1},</span>
+<span class="co">#&gt;   }</span>
+</pre></div>
+<p>Please note that the <code>recount</code> was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.</p>
+</div>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<p>Please note that the <code>recountWorkshop2020</code> project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
+<div id="development-tools" class="section level2">
+<h2 class="hasAnchor">
+<a href="#development-tools" class="anchor"></a>Development tools</h2>
+<ul>
+<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.11/BiocCheck">BiocCheck</a></em>.</li>
+<li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr">covr</a></em>.</li>
+<li>The <a href="http://LieberInstitute.github.io/recountWorkshop2020">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown">pkgdown</a></em>.</li>
+<li>The code is styled automatically thanks to <em><a href="https://CRAN.R-project.org/package=styler">styler</a></em>.</li>
+<li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2">roxygen2</a></em>.</li>
+</ul>
+<p>For more details, check the <code>dev</code> directory.</p>
+<p>This package was developed using <em><a href="https://github.com/lcolladotor/biocthis">biocthis</a></em>.</p>
+</div>
+</div>
+<div id="human-rna-seq-data-from-recount2-and-related-packages" class="section level1">
 <h1 class="hasAnchor">
-<a href="#instructor" class="anchor"></a>Instructor</h1>
+<a href="#human-rna-seq-data-from-recount2-and-related-packages" class="anchor"></a>Human RNA-seq data from recount2 and related packages</h1>
+<div id="instructor" class="section level2">
+<h2 class="hasAnchor">
+<a href="#instructor" class="anchor"></a>Instructor</h2>
 <p>Leonardo Collado-Torres</p>
 <ul>
 <li><a href="https://github.com/lcolladotor">GitHub</a></li>
@@ -105,38 +168,45 @@
 <li><a href="mailto:lcolladotor@gmail.com">Email</a></li>
 </ul>
 </div>
-<div id="workshop-description" class="section level1">
-<h1 class="hasAnchor">
-<a href="#workshop-description" class="anchor"></a>Workshop Description</h1>
-<p>The recount2 project re-processed RNA sequencing (RNA-seq) data on over 70,000 human RNA-seq samples spanning a variety of tissues, cell types and disease conditions. Researchers can easily access these data via the <code>recount</code> Bioconductor package, and can quickly import gene, exon, exon-exon junction and base-pair coverage data for uniformly processed data from the SRA, GTEx and TCGA projects in R for analysis. This workshop will include an overview of the recount2 project as well as methods and tools that have been to improve it since 2017. The overview will be followed by a hands-on session where you will dive into <code>recount</code> and related packages along the lines of the <a href="http://bioconductor.org/packages/release/workflows/html/recountWorkflow.html">recount workflow</a>. We will also cover new related packages such as <a href="http://bioconductor/packages/GenomicState"><code>GenomicState</code></a> and <a href="http://research.libd.org/libdRSE/"><code>libdRSE</code></a>.</p>
+<div id="workshop-description" class="section level2">
+<h2 class="hasAnchor">
+<a href="#workshop-description" class="anchor"></a>Workshop Description</h2>
+<p>The recount2 project re-processed RNA sequencing (RNA-seq) data on over 70,000 human RNA-seq samples spanning a variety of tissues, cell types and disease conditions. Researchers can easily access these data via the <code>recount</code> Bioconductor package, and can quickly import gene, exon, exon-exon junction and base-pair coverage data for uniformly processed data from the SRA, GTEx and TCGA projects in R for analysis. This workshop will include an overview of the recount2 project as well as methods and tools that have been to improve it since 2017. The overview will be followed by a hands-on session where you will dive into <code>recount</code> and related packages along the lines of the <a href="http://bioconductor.org/packages/release/workflows/html/recountWorkflow.html">recount workflow</a>. We will also cover new related packages such as <a href="http://bioconductor/packages/GenomicState"><code>GenomicState</code></a>.</p>
 <p>In more detail, this workshop will cover different use cases of the <code>recount</code> package, including downloading and normalizing data, processing and cleaning relevant phenotype data (including <code>recount-brain</code>), performing differential expression (DE) analyses using other Bioconductor packages. The workshop will also cover how to use the base-pair coverage data for annotation-agnostic DE analyses and for visualizing coverage data for features of interest. After taking this workshop, attendees will be ready to enhance their analyses by leveraging RNA-seq data from 70,000 human samples.</p>
 <p><a href="https://jhubiostatistics.shinyapps.io/recount/">recount2 website</a>, <a href="http://bioconductor.org/packages/recount">recount package</a>, <a href="http://www.nature.com/nbt/journal/v35/n4/full/nbt.3838.html">paper</a>, <a href="http://bioconductor.org/packages/release/workflows/html/recountWorkflow.html">recount workflow</a>.</p>
 <p>Prior editions: <a href="https://github.com/LieberInstitute/recountWorkshop">Bioc2017</a>, <a href="https://github.com/LieberInstitute/recountWorkshop2019">BioC2019</a>.</p>
+</div>
 <div id="pre-requisites" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pre-requisites" class="anchor"></a>Pre-requisites</h2>
 <ul>
 <li>Basic knowledge of R syntax</li>
 <li>Basic knowledge of RNA-seq or gene expression data</li>
-<li>Familiarity with SummarizedExperiment <a href="http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html">vignette</a>
+<li>Familiarity with <code>SummarizedExperiment</code> <a href="http://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html">vignette</a>
 </li>
-<li>Familiarity with the RangedSummarizedExperiment class</li>
+<li>Familiarity with the <code>RangedSummarizedExperiment</code> class</li>
 </ul>
 </div>
 <div id="workshop-participation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#workshop-participation" class="anchor"></a>Workshop Participation</h2>
-<p>Students are expected to ask questions during the recount2 overview presentation and to bring their own laptop so they can follow the hands-on portion of the workshop.</p>
-</div>
-<div id="bioconductor-packages-used" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bioconductor-packages-used" class="anchor"></a><em>Bioconductor</em> packages used</h2>
+<p>Students are expected to ask questions during the recount2 overview presentation and to bring their own laptop so they can follow the hands-on portion of the workshop. You can download a Docker image with all the workshop files using:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> run -e PASSWORD=bioc2020 -p 8787:8787 -d —rm lcollado/recountworkshop2020</span></code></pre></div>
+<p>Then, log in to RStudio at <a href="http://localhost:8787" class="uri">http://localhost:8787</a> using username <code>rstudio</code> and password <code>bioc2020</code>. Note that on Windows you need to provide your localhost IP address like <code>http://191.163.92.108:8787/</code> - find it using <code>docker-machine ip default</code> in Docker’s terminal.</p>
+<p>To see the vignette on RStudio’s window (from the docker image), run <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes(package = "recountWorkshop2020")</a></code>. Click on one of the links, “HTML”, “source”, “R code”. In case of <code>The requested page was not found</code> error, add <code>help/</code> to the URL right after the hostname, e.g., <a href="http://localhost:8787/help/library/recountWorkshop2020/doc/recount-workshop.html" class="uri">http://localhost:8787/help/library/recountWorkshop2020/doc/recount-workshop.html</a>. This is a <a href="https://github.com/rocker-org/rocker-versioned/issues/178">known bug</a>.</p>
+<div id="bioconductor-packages-used" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bioconductor-packages-used" class="anchor"></a><em>Bioconductor</em> packages used</h3>
 <p><code>SummarizedExperiment</code>, <code>recount</code>, <code>GenomicRanges</code>, <code>DESeq2</code>, <code>derfinder</code>, <code>regionReport</code> are among the packages that will be explicitly covered.</p>
 </div>
-<div id="time-outline" class="section level2">
-<h2 class="hasAnchor">
-<a href="#time-outline" class="anchor"></a>Time outline</h2>
+<div id="time-outline" class="section level3">
+<h3 class="hasAnchor">
+<a href="#time-outline" class="anchor"></a>Time outline</h3>
 <table class="table">
+<colgroup>
+<col width="93%">
+<col width="6%">
+</colgroup>
 <thead><tr class="header">
 <th>Activity</th>
 <th>Time</th>
@@ -151,73 +221,45 @@
 <td>15m</td>
 </tr>
 <tr class="odd">
-<td>break 1 / package setup and troubleshooting</td>
-<td>5 min</td>
-</tr>
-<tr class="even">
-<td>using recount-brain</td>
-<td>10m</td>
-</tr>
-<tr class="odd">
 <td>Gene-level analysis with recount2 and recount-brain</td>
 <td>15m</td>
 </tr>
 <tr class="even">
-<td>break 2</td>
+<td>Un-annotated transcriptome methods overview: <code>derfinder</code>, <code>GenomicState</code>
+</td>
 <td>5 min</td>
 </tr>
 <tr class="odd">
-<td>Un-annotated transcriptome methods overview</td>
-<td>10 min</td>
-</tr>
-<tr class="even">
-<td>identifying expressed regions with <code>derfinder</code>
-</td>
-<td>15m</td>
-</tr>
-<tr class="odd">
-<td>break 3</td>
-<td>5 min</td>
-</tr>
-<tr class="even">
-<td>visualizing ERs with annotation from <code>GenomicState</code>
-</td>
-<td>15m</td>
-</tr>
-<tr class="odd">
-<td>querying and visualizing data from <code>libdRSE</code>
-</td>
-<td>10 m</td>
-</tr>
-<tr class="even">
-<td>closing remarks</td>
+<td>the future: recount3</td>
 <td>5m</td>
 </tr>
 </tbody>
 </table>
-<p>Total: 2 hrs broken up into two 1 hour sessions. Session 1 is about gene-level data from <code>recount</code>, and session is is about the un-annotated transcriptome powered by <code>recount</code>, <code>derfinder</code>, <code>GenomicState</code> and <code>libdRSE</code>.</p>
+<p>Total: a 50-55 minute session.</p>
 </div>
 </div>
-<div id="workshop-goals-and-objectives" class="section level1">
-<h1 class="hasAnchor">
-<a href="#workshop-goals-and-objectives" class="anchor"></a>Workshop goals and objectives</h1>
-<div id="learning-goals" class="section level2">
+<div id="workshop-goals-and-objectives" class="section level2">
 <h2 class="hasAnchor">
-<a href="#learning-goals" class="anchor"></a>Learning goals</h2>
+<a href="#workshop-goals-and-objectives" class="anchor"></a>Workshop goals and objectives</h2>
+<div id="learning-goals" class="section level3">
+<h3 class="hasAnchor">
+<a href="#learning-goals" class="anchor"></a>Learning goals</h3>
 <ul>
 <li>Understand the publicly data available via the recount2 project beyond gene counts</li>
 <li>Identify how recount2 data could be useful for your RNA-seq projects and how you can use it</li>
 <li>Describe the annotation-agnostic methods powered by recount2 that complement other RNA-seq analysis pipelines</li>
 </ul>
 </div>
-<div id="learning-objectives" class="section level2">
-<h2 class="hasAnchor">
-<a href="#learning-objectives" class="anchor"></a>Learning objectives</h2>
+<div id="learning-objectives" class="section level3">
+<h3 class="hasAnchor">
+<a href="#learning-objectives" class="anchor"></a>Learning objectives</h3>
 <ul>
 <li>Re-analyze public RNA-seq data using the recount Bioconductor package</li>
 <li>Recognize how to access the different types of data hosted by recount2</li>
-<li>Locate resources that enhance recount2 such as recount-brain, GenomicState, libdrSE, and review how to use them</li>
+<li>Locate resources that enhance recount2 such as recount-brain, <code>derfinder</code>, and <code>GenomicState</code>
+</li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -261,7 +303,15 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#stable"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="http://bioconductor.org/checkResults/release/workflows-LATEST/recountWorkflow/"><img src="http://bioconductor.org/shields/build/release/workflows/recountWorkflow.svg" alt="BioC status"></a></li>
+<li><a href="https://github.com/LieberInstitute/recountWorkshop2020/actions"><img src="https://github.com/LieberInstitute/recountWorkshop2020/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
