@@ -71,7 +71,14 @@ Prior editions:
 
 Students are expected to ask questions during the recount2 overview
 presentation and to bring their own laptop so they can follow the
-hands-on portion of the workshop. You can download a Docker image with
+hands-on portion of the workshop.
+
+
+The slides for the workshop are available through [speakerdeck](https://speakerdeck.com/lcolladotor/human-rna-seq-data-from-recount2-and-related-packages).
+
+<script async class="speakerdeck-embed" data-id="78092f5c558242f1aa3085d9abc9c061" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+
+You can download a Docker image with
 all the workshop files using:
 
 ``` bash
