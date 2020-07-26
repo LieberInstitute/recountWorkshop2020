@@ -29,7 +29,7 @@ biocViews: Workshop, Coverage, DifferentialExpression, GeneExpression,
     RNASeq, Sequencing, DataImport
 VignetteBuilder: knitr
 Imports:
-    recount (>= 1.10.1),
+    recount,
     GenomicRanges,
     ideal,
     DESeq2,
@@ -42,7 +42,8 @@ Imports:
     GenomicFeatures,
     bumphunter,
     derfinderPlot,
-    sessioninfo
+    sessioninfo,
+    GenomicState
 Suggests:
     bookdown,
     knitr,

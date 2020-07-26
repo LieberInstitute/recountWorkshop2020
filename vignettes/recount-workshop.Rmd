@@ -134,7 +134,7 @@ knitr::include_graphics(
 
 ### Packages used in the workshop
 
-In this workshop we will use several Bioconductor packages. To reproduce the entirety of this workshop, install the packages using the following code after installing R 3.6.x from CRAN in order to use Bioconductor version 3.9 or newer.
+In this workshop we will use several Bioconductor packages. To reproduce the entirety of this workshop, install the packages using the following code after installing R 4.0 from CRAN in order to use Bioconductor version 3.11 or newer.
 
 ```{r "install", eval = FALSE}
 ## Install packages from Bioconductor
@@ -143,7 +143,7 @@ BiocManager::install(c(
     "recount", "GenomicRanges", "DESeq2", "ideal", "regionReport",
     "clusterProfiler", "org.Hs.eg.db", "gplots", "derfinder",
     "rtracklayer", "GenomicFeatures", "bumphunter", "derfinderPlot",
-    "sessioninfo"))
+    "sessioninfo", "GenomicState"))
 ```
 
 Once installed, load all of the packages with the following code.
@@ -162,6 +162,7 @@ library("rtracklayer")
 library("GenomicFeatures")
 library("bumphunter")
 library("derfinderPlot")
+library("GenomicState")
 library("sessioninfo")
 ```
 
@@ -328,12 +329,6 @@ library("recountWorkshop2020")
 local_path <- system.file("extdata", "SRP056604", package = "recountWorkshop2020")
 dir(local_path)
 ```
-
-```{r "testing locally", echo = FALSE, eval = FALSE}
-## For testing
-local_path <- "/Users/lcollado/Dropbox/Code/recountWorkshop2020/inst/extdata/SRP056604"
-```
-
 
 The commands should work with the data hosted from recount2 if there are no problems with the wifi connection. Although we prefer that you use the pre-installed data for this workshop.
 
@@ -511,14 +506,10 @@ For our example use case, project SRP056604 has redundant information with the `
 file.exists(file.path(local_path, "SraRunTable.txt"))
 
 ## Read the table
-sra <- read.table(file.path(local_path, "SraRunTable.txt"),
-    header = TRUE, sep = "\t")
+sra <- read.csv(file.path(local_path, "SraRunTable.txt"))
 
 ## Explore it
 head(sra)
-
-## We will remove some trailing '_s' from the variable names
-colnames(sra) <- gsub("_s$", "", colnames(sra))
 
 ## Add the sra_ prefix to the variable names
 colnames(sra) <- paste0("sra_", colnames(sra))
@@ -827,7 +818,7 @@ The fold change for most exons shown above agrees with the gene level fold chang
 ### Base-pair resolution
 
 
-recount2 provides BigWig coverage files (unscaled) for all samples as well as a mean BigWig coverage file per project where each sample was scaled to 40 million 100 base-pair reads. The mean BigWig files are exactly what is needed to start an _expressed regions_ analysis with `derfinder` [@collado-torres_flexible_2017]. `recount` provides two related functions: `expressed_regions()` which is used to define a set of regions based on the mean BigWig file for a given project, and `coverage_matrix()` which based on a set of regions builds a count coverage matrix in a _RangedSummarizedExperiment_ object just like the ones that are provided for genes and exons. Both functions ultimately use `import.bw()` from `rtracklayer` [@rtracklayer] which currently is not supported on Windows machines. While this presents a portability disadvantage, on the other side it allows reading portions of BigWig files from the web without having to fully download them. `download_study()` with `type = "mean"`  or `type = "samples"` can be used to download the BigWig files, which we recommend doing when working with them extensively.
+recount2 provides BigWig coverage files (unscaled) for all samples as well as a mean BigWig coverage file per project where each sample was scaled to 40 million 100 base-pair reads. The mean BigWig files are exactly what is needed to start an _expressed regions_ analysis with `derfinder` [@collado-torres_flexible_2017]. `recount` provides two related functions: `expressed_regions()` which is used to define a set of regions based on the mean BigWig file for a given project, and `coverage_matrix()` which based on a set of regions builds a count coverage matrix in a _RangedSummarizedExperiment_ object just like the ones that are provided for genes and exons. `download_study()` with `type = "mean"`  or `type = "samples"` can be used to download the BigWig files, which we recommend doing when working with them extensively.
 
 For illustrative purposes, we will use the data from chromosome 12 for the SRP056604 project. We chose chromosome 12 based on the number of DE genes per chromosome
 
@@ -855,7 +846,7 @@ derfinder::createBw(fullCov,
 ```
 
 
-```{r "identify regions", eval = .Platform$OS.type != "windows"}
+```{r "identify regions"}
 ## Define expressed regions for study SRP056604, only for chromosome 12
 regions <- expressed_regions("SRP056604", "chr12", cutoff = 5L,
     maxClusterGap = 3000L, outdir = local_path)
@@ -872,7 +863,7 @@ length(regions)
 
 Now that we have a set of regions to work with, we proceed to build a _RangedSummarizedExperiment_ object with the coverage counts, add the expanded metadata we built for the gene level, and scale the counts. Note that `coverage_matrix()` by defaults scales the counts. We will round them to integers in order to use `DESeq2`.
 
-```{r "build_rse_ER", eval = .Platform$OS.type != "windows"}
+```{r "build_rse_ER"}
 ## Compute coverage matrix for study SRP056604, only for chromosome 12
 ## Takes about 45 seconds with local data
 ## and about 70 seconds with data from the web (outdir = NULL)
@@ -885,7 +876,7 @@ colData(rse_er) <- colData(rse_gene_scaled)
 
 Now that we have an integer count matrix for the expressed regions, we can proceed with the differential expression analysis just like we did at the gene and exon feature levels.
 
-```{r "er_de_analysis", eval = .Platform$OS.type != "windows", out.width="100%", fig.align="center"}
+```{r "er_de_analysis", out.width="100%", fig.align="center"}
 ## Define DESeq2 object
 dds_er <- DESeqDataSet(rse_er, ~ sex + age + pmi + case)
 dds_er <- DESeq(dds_er, test = "LRT", reduced = ~ sex + age + pmi,
@@ -908,7 +899,7 @@ DESeq2Report(dds_er, res = res_er, project = "SRP056604 - DERs",
 
 Having identified the differentially expressed regions (DERs), we can sort all regions by their adjusted p-value. 
 
-```{r "sort_qvalue", eval = .Platform$OS.type != "windows"}
+```{r "sort_qvalue"}
 ## Sort regions by q-value
 regions_by_padj <- regions[order(res_er$padj, decreasing = FALSE)]
 
@@ -926,7 +917,7 @@ Because the unscaled BigWig files are available in recount2, several visualizati
 
 First, we need to get the list of URLs for the BigWig files. We can either manually construct them or search them inside the `recount_url` table. For this workshop, we have the data locally so we will use those files.
 
-```{r "find_bws", eval = .Platform$OS.type != "windows"}
+```{r "find_bws"}
 ## Construct the list of BigWig URLs
 ## They have the following form:
 ## http://duffel.rail.bio/recount/
@@ -952,7 +943,7 @@ names(bws) <- colData(rse_er)$run
 
 We will visualize the DERs using `derfinderPlot`, similar to what was done in Jaffe et al., 2015 [@jaffe2015]. We will first add a little padding to the regions: 100 base-pairs on each side.
 
-```{r "add_padding", eval = .Platform$OS.type != "windows"}
+```{r "add_padding"}
 ## Add 100 bp padding on each side
 regions_resized <- resize(regions_by_padj[1:10],
     width(regions_by_padj[1:10]) + 200, fix = "center")
@@ -960,7 +951,7 @@ regions_resized <- resize(regions_by_padj[1:10],
 
 Next, we obtain the base-pair coverage data for each DER and scale the data to a library size of 40 million 100 base-pair reads using the coverage AUC information we have in the metadata.
 
-```{r "regionCov", eval = .Platform$OS.type != "windows"}
+```{r "regionCov"}
 ## Get the bp coverage data for the plots
 library("derfinder")
 regionCov <- getRegionCoverage(regions = regions_resized, files = bws,
@@ -970,62 +961,15 @@ regionCov <- getRegionCoverage(regions = regions_resized, files = bws,
 
 The function `plotRegionCoverage()` requires several pieces of annotation information for the plots that use a TxDb object. For recount2 we used Gencode v25 hg38's annotation, which means that we need to process it manually instead of using a pre-computed TxDb package. 
 
-To create a TxDb object for Gencode v25, we first need to import the data. Since we are working only with chromosome 21 for this example, we can then subset it. Next we need to add the relevant chromosome information. Some of the annotation functions we will use can handle Entrez or Ensembl ids, but not Gencode ids. So we will make sure that we are working with Ensembl ids before finally creating the Gencode v25 TxDb object.
+To create a TxDb object for Gencode v25, this can take several lines of code and to simplify this process we created the `GenomicState` package which provides processed annotation files for Gencode that can be easily used with `derfinder` and other Bioconductor packages. `GenomicState` is powered by `AnnotationHub` and thus uses similar syntax to it. Although years later, we created `GenomicState` in response to a comment from one of the reviewers of the `recountWorkflow` paper.
 
-```{r 'subsetGencodeV25', eval = FALSE, echo = FALSE}
-## Create a smaller gff file for chr12 only
-gencode_v25_hg38 <- rtracklayer::import(paste0(
-    "ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_25/",
-    "gencode.v25.annotation.gtf.gz"))
-gencode_v25_hg38 <- keepSeqlevels(gencode_v25_hg38, "chr12",
-    pruning.mode = "coarse")
-rtracklayer::export.gff(gencode_v25_hg38,
-    con = '~/Dropbox/code/recountWorkshop2020/inst/extdata/gencode.v25.annotation.chr12.gtf',
-    format = 'gtf'
-)
-R.utils::gzip('~/Dropbox/code/recountWorkshop2020/inst/extdata/gencode.v25.annotation.chr12.gtf')
-```
-
-
-```{r "gencode_txdb", eval = .Platform$OS.type != "windows"}
-## Import the Gencode v25 hg38 gene annotation
-library("rtracklayer")
-
-## Check if the file exists locally (already subsetted to chr12)
-gtf_file <- system.file("extdata", "gencode.v25.annotation.chr12.gtf.gz",
-    package = "recountWorkshop2020")
-
-## If the file doesn't exist, use the data from the web
-gtf_file <- ifelse(file.exists(gtf_file), gtf_file, paste0(
-    "ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_25/",
-    "gencode.v25.annotation.gtf.gz")
-)
-
-## Import the GTF file
-gencode_v25_hg38 <- import(gtf_file)
-            
-## Keep only the chr12 info
-gencode_v25_hg38 <- keepSeqlevels(gencode_v25_hg38, "chr12",
-    pruning.mode = "coarse")
-
+```{r "gencode_txdb"}
 ## Get the chromosome information for hg38
-library("GenomicFeatures")
-chrInfo <- getChromInfoFromUCSC("hg38")
-chrInfo$chrom <- as.character(chrInfo$chrom)
-chrInfo <- chrInfo[chrInfo$chrom %in% seqlevels(regions), ]
-chrInfo$isCircular <- FALSE
-
-## Assign the chromosome information to the object we will use to
-## create the txdb object
-si <- with(chrInfo, Seqinfo(as.character(chrom), size, isCircular,
-    genome = "hg38"))
-seqinfo(gencode_v25_hg38) <- si
-
-## Switch from Gencode gene ids to Ensembl gene ids
-gencode_v25_hg38$gene_id <- gsub("\\..*", "", gencode_v25_hg38$gene_id)
-
-## Create the TxDb object
-gencode_v25_hg38_txdb <- makeTxDbFromGRanges(gencode_v25_hg38)
+library("GenomicState")
+gencode_v25_hg38_txdb <- GenomicStateHub(
+  version = "25",
+  genome = "hg38",
+  filetype = "TxDb")[[1]]
 
 ## Explore the TxDb object
 gencode_v25_hg38_txdb
@@ -1033,26 +977,28 @@ gencode_v25_hg38_txdb
 
 Now that we have a TxDb object for Gencode v25 on hg38 coordinates, we can use `bumphunter`'s [@bumphunter] annotation functions for annotating the original 10 regions we were working with. Since we are using Ensembl instead of Entrez gene ids, we need to pass this information to `annotateTranscripts()`. Otherwise, the function will fail to retrieve the gene symbols.
 
-```{r "bump_ann", eval = .Platform$OS.type != "windows"}
-library("bumphunter")
-## Annotate all transcripts for gencode v25 based on the TxDb object
+```{r "bump_ann"}
+## Download annotated transcripts for gencode v25 based on the TxDb object
 ## we built previously.
-ann_gencode_v25_hg38 <- annotateTranscripts(gencode_v25_hg38_txdb,
-    annotationPackage = "org.Hs.eg.db",
-    mappingInfo = list("column" = "ENTREZID", "keytype" = "ENSEMBL",
-    "multiVals" = "first"))
+ann_gencode_v25_hg38 <- GenomicStateHub(
+  version = "25",
+  genome = "hg38",
+  filetype = "AnnotatedGenes")[[1]]
     
 ## Annotate the regions of interest
 ## Note that we are using the original regions, not the resized ones
+library("bumphunter")
 nearest_ann <- matchGenes(regions_by_padj[1:10], ann_gencode_v25_hg38)
 ```
 
 The final piece we need to run `plotRegionCoverage()` is information about which base-pairs are exonic, intronic, etc. This is done via the `annotateRegions()` function in `derfinder`, which itself requires prior processing of the TxDb information by `makeGenomicState()`.
 
-```{r "make_gs", eval = .Platform$OS.type != "windows"}
-## Create the genomic state object using the gencode TxDb object
-gs_gencode_v25_hg38 <- makeGenomicState(gencode_v25_hg38_txdb,
-    chrs = seqlevels(regions))
+```{r "make_gs"}
+## Download the genomic state object using the gencode TxDb object
+gs_gencode_v25_hg38 <- GenomicStateHub(
+  version = "25",
+  genome = "hg38",
+  filetype = "GenomicState")[[1]]
     
 ## Annotate the original regions
 regions_ann <- annotateRegions(regions_resized,
@@ -1061,7 +1007,7 @@ regions_ann <- annotateRegions(regions_resized,
 
 We can finally use `plotRegionCoverage()` to visualize the top 10 regions coloring by whether they are LOAD or control samples. Known exons are shown in dark blue, introns in light blue.
 
-```{r "region_plots", eval = .Platform$OS.type != "windows", out.width="100%", fig.align="center"}
+```{r "region_plots", out.width="100%", fig.align="center"}
 library("derfinderPlot")
 plotRegionCoverage(regions = regions_resized, regionCoverage = regionCov, 
    groupInfo = colData(rse_er)$case,
@@ -1077,7 +1023,7 @@ In the previous plots we can see that some DERs are longer than known exons, oth
 
 ## Summary
 
-In this workshop we described in detail the available data in recount2, how the coverage count matrices were computed, the metadata included in recount2 and how to get new phenotypic information from other sources including from `recount-brain`. We showed how to perform a differential expression analysis at the gene and exon levels as well as use an annotation-agnostic approach. Finally, we explained how to visualize the base-pair information for a given set of regions. This workshop constitutes a strong basis to leverage the recount2 and `recount-brain` data for human RNA-seq analyses.
+In this workshop we described in detail the available data in recount2, how the coverage count matrices were computed, the metadata included in recount2 and how to get new phenotypic information from other sources including from `recount-brain`. We showed how to perform a differential expression analysis at the gene and exon levels as well as use an annotation-agnostic approach. Finally, we explained how to visualize the base-pair information for a given set of regions using `derfinder` and `GenomicState`. This workshop constitutes a strong basis to leverage the recount2 and `recount-brain` data for human RNA-seq analyses.
 
 
 ## Session information
