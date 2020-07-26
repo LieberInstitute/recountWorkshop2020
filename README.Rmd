@@ -53,7 +53,7 @@ Prior editions: [Bioc2017](https://github.com/LieberInstitute/recountWorkshop), 
 Students are expected to ask questions during the recount2 overview presentation and to bring their own laptop so they can follow the hands-on portion of the workshop. You can download a Docker image with all the workshop files using:
 
 ```bash
-docker run -e PASSWORD=bioc2020 -p 8787:8787 -d —rm lcollado/recountworkshop2020
+docker run -e PASSWORD=bioc2020 -p 8787:8787 -d --rm lcollado/recountworkshop2020
 ```
 
 Then, log in to RStudio at [http://localhost:8787](http://localhost:8787) using username `rstudio` and password `bioc2020`. Note that on Windows you need to provide your localhost IP address like `http://191.163.92.108:8787/` - find it using `docker-machine ip default` in Docker's terminal.

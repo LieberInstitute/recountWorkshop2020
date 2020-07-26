@@ -75,7 +75,7 @@ hands-on portion of the workshop. You can download a Docker image with
 all the workshop files using:
 
 ``` bash
-docker run -e PASSWORD=bioc2020 -p 8787:8787 -d —rm lcollado/recountworkshop2020
+docker run -e PASSWORD=bioc2020 -p 8787:8787 -d --rm lcollado/recountworkshop2020
 ```
 
 Then, log in to RStudio at <http://localhost:8787> using username
