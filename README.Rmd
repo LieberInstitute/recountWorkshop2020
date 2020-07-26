@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/LieberInstitute/recountWorkshop2020/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/recountWorkshop2020/actions)
 <!-- badges: end -->
 
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure1.png" width="800px" />
+
 ## Instructor
 
 [Leonardo Collado-Torres](http://lcolladotor.github.io/)
@@ -107,7 +109,7 @@ Below is the citation output from using `citation('recount` in R. Please
 run this yourself to check for any updates on how to cite __recount__.
 
 ```{r 'citation', eval = requireNamespace('recount')}
-print(citation('recount')[2], bibtex = TRUE)
+print(citation("recount")[2], bibtex = TRUE)
 ```
 
 Please note that the `recount` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.

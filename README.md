@@ -13,6 +13,8 @@ status](http://bioconductor.org/shields/build/release/workflows/recountWorkflow.
 status](https://github.com/LieberInstitute/recountWorkshop2020/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/recountWorkshop2020/actions)
 <!-- badges: end -->
 
+<img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure1.png" width="800px" />
+
 ## Instructor
 
 [Leonardo Collado-Torres](http://lcolladotor.github.io/)
@@ -147,7 +149,7 @@ Below is the citation output from using `citation('recount` in R. Please
 run this yourself to check for any updates on how to cite **recount**.
 
 ``` r
-print(citation('recount')[2], bibtex = TRUE)
+print(citation("recount")[2], bibtex = TRUE)
 #> 
 #> Collado-Torres L, Nellore A, Jaffe AE (2017). "recount workflow:
 #> Accessing over 70,000 human RNA-seq samples with Bioconductor [version
