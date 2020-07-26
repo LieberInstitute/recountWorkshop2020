@@ -138,7 +138,7 @@
 <h2 class="hasAnchor">
 <a href="#workshop-participation" class="anchor"></a>Workshop Participation</h2>
 <p>Students are expected to ask questions during the recount2 overview presentation and to bring their own laptop so they can follow the hands-on portion of the workshop. You can download a Docker image with all the workshop files using:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">docker</span> run -e PASSWORD=bioc2020 -p 8787:8787 -d —rm lcollado/recountworkshop2020</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">docker</span> run -e PASSWORD=bioc2020 -p 8787:8787 -d --rm lcollado/recountworkshop2020</span></code></pre></div>
 <p>Then, log in to RStudio at <a href="http://localhost:8787">http://localhost:8787</a> using username <code>rstudio</code> and password <code>bioc2020</code>. Note that on Windows you need to provide your localhost IP address like <code>http://191.163.92.108:8787/</code> - find it using <code>docker-machine ip default</code> in Docker’s terminal.</p>
 <p>To see the vignette on RStudio’s window (from the docker image), run <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes(package = "recountWorkshop2020")</a></code>. Click on one of the links, “HTML”, “source”, “R code”. In case of <code>The requested page was not found</code> error, add <code>help/</code> to the URL right after the hostname, e.g., <a href="http://localhost:8787/help/library/recountWorkshop2020/doc/recount-workshop.html">http://localhost:8787/help/library/recountWorkshop2020/doc/recount-workshop.html</a>. This is a <a href="https://github.com/rocker-org/rocker-versioned/issues/178">known bug</a>.</p>
 <div id="bioconductor-packages-used" class="section level3">
@@ -508,7 +508,7 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <span class="co">## of reads Rail-RNA downloaded</span>
 <span class="kw">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/all_metadata.html">all_metadata</a></span>()
 </pre></div>
-<pre><code>## 2020-07-26 21:50:27 downloading the metadata to /tmp/RtmpGlxizL/metadata_clean_sra.Rdata</code></pre>
+<pre><code>## 2020-07-26 22:13:23 downloading the metadata to /tmp/RtmpgqyKjq/metadata_clean_sra.Rdata</code></pre>
 <div class="sourceCode" id="cb27"><pre class="downlit">
 <span class="kw">meta</span>[
     <span class="kw">meta</span><span class="op">$</span><span class="kw">run</span> <span class="op">==</span> <span class="st">"SRR2071341"</span>,
@@ -681,7 +681,7 @@ Exon boundaries. Reads that go beyond the known exon boundaries can inform us of
 <span class="co">## Add the predictions</span>
 <span class="kw">rse_gene</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_predictions.html">add_predictions</a></span>(<span class="kw">rse_gene</span>)
 </pre></div>
-<pre><code>## 2020-07-26 21:50:30 downloading the predictions to /tmp/RtmpGlxizL/PredictedPhenotypes_v0.0.06.rda</code></pre>
+<pre><code>## 2020-07-26 22:13:26 downloading the predictions to /tmp/RtmpgqyKjq/PredictedPhenotypes_v0.0.06.rda</code></pre>
 <pre><code>## Loading objects:
 ##   PredictedPhenotypes</code></pre>
 <div class="sourceCode" id="cb65"><pre class="downlit">
@@ -907,7 +907,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="co">## Don't specify the rse argument to download the full recount_brain table</span>
 <span class="kw">recount_brain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata</a></span>(source = <span class="st">"recount_brain_v2"</span>)
 </pre></div>
-<pre><code>## 2020-07-26 21:50:31 downloading the recount_brain metadata to /tmp/RtmpGlxizL/recount_brain_v2.Rdata</code></pre>
+<pre><code>## 2020-07-26 22:13:27 downloading the recount_brain metadata to /tmp/RtmpgqyKjq/recount_brain_v2.Rdata</code></pre>
 <pre><code>## Loading objects:
 ##   recount_brain</code></pre>
 <div class="sourceCode" id="cb91"><pre class="downlit">
@@ -947,10 +947,10 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <div class="sourceCode" id="cb97"><pre class="downlit">
 <span class="kw">rse_gene</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/recount/man/add_metadata.html">add_metadata</a></span>(<span class="kw">rse_gene</span>, source = <span class="st">"recount_brain_v2"</span>)
 </pre></div>
-<pre><code>## 2020-07-26 21:50:32 downloading the recount_brain metadata to /tmp/RtmpGlxizL/recount_brain_v2.Rdata</code></pre>
+<pre><code>## 2020-07-26 22:13:28 downloading the recount_brain metadata to /tmp/RtmpgqyKjq/recount_brain_v2.Rdata</code></pre>
 <pre><code>## Loading objects:
 ##   recount_brain</code></pre>
-<pre><code>## 2020-07-26 21:50:34 found 8 out of 8 samples in the recount_brain metadata</code></pre>
+<pre><code>## 2020-07-26 22:13:29 found 8 out of 8 samples in the recount_brain metadata</code></pre>
 <div class="sourceCode" id="cb101"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="fu">colData</span>(<span class="kw">rse_gene</span>))
 </pre></div>
@@ -1337,14 +1337,14 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
     maxClusterGap = <span class="fl">3000L</span>, outdir = <span class="kw">local_path</span>
 )
 </pre></div>
-<pre><code>## 2020-07-26 21:54:47 loadCoverage: loading BigWig file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/mean_SRP056604.bw</code></pre>
-<pre><code>## 2020-07-26 21:54:57 loadCoverage: applying the cutoff to the merged data</code></pre>
-<pre><code>## 2020-07-26 21:55:34 filterData: originally there were 133275309 rows, now there are 133275309 rows. Meaning that 0 percent was filtered.</code></pre>
-<pre><code>## 2020-07-26 21:55:34 findRegions: identifying potential segments</code></pre>
-<pre><code>## 2020-07-26 21:55:34 findRegions: segmenting information</code></pre>
-<pre><code>## 2020-07-26 21:55:34 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
-<pre><code>## 2020-07-26 21:55:42 findRegions: identifying candidate regions</code></pre>
-<pre><code>## 2020-07-26 21:55:43 findRegions: identifying region clusters</code></pre>
+<pre><code>## 2020-07-26 22:17:40 loadCoverage: loading BigWig file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/mean_SRP056604.bw</code></pre>
+<pre><code>## 2020-07-26 22:17:49 loadCoverage: applying the cutoff to the merged data</code></pre>
+<pre><code>## 2020-07-26 22:18:22 filterData: originally there were 133275309 rows, now there are 133275309 rows. Meaning that 0 percent was filtered.</code></pre>
+<pre><code>## 2020-07-26 22:18:22 findRegions: identifying potential segments</code></pre>
+<pre><code>## 2020-07-26 22:18:22 findRegions: segmenting information</code></pre>
+<pre><code>## 2020-07-26 22:18:22 .getSegmentsRle: segmenting with cutoff(s) 5</code></pre>
+<pre><code>## 2020-07-26 22:18:29 findRegions: identifying candidate regions</code></pre>
+<pre><code>## 2020-07-26 22:18:30 findRegions: identifying region clusters</code></pre>
 <div class="sourceCode" id="cb173"><pre class="downlit">
 <span class="co">## Explore the resulting expressed regions</span>
 <span class="kw">regions</span>
@@ -1404,18 +1404,18 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
     chunksize = <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">regions</span>), outdir = <span class="kw">local_path</span>, round = <span class="fl">TRUE</span>
 ))
 </pre></div>
-<pre><code>## 2020-07-26 21:55:50 downloading file SRP056604.tsv to /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604</code></pre>
-<pre><code>## 2020-07-26 21:55:51 railMatrix: processing regions 1 to 22950</code></pre>
-<pre><code>## 2020-07-26 21:55:51 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931819.bw</code></pre>
-<pre><code>## 2020-07-26 21:55:54 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931818.bw</code></pre>
-<pre><code>## 2020-07-26 21:55:56 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931817.bw</code></pre>
-<pre><code>## 2020-07-26 21:55:59 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931816.bw</code></pre>
-<pre><code>## 2020-07-26 21:56:02 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931815.bw</code></pre>
-<pre><code>## 2020-07-26 21:56:05 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931814.bw</code></pre>
-<pre><code>## 2020-07-26 21:56:09 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931813.bw</code></pre>
-<pre><code>## 2020-07-26 21:56:12 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931812.bw</code></pre>
+<pre><code>## 2020-07-26 22:18:37 downloading file SRP056604.tsv to /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604</code></pre>
+<pre><code>## 2020-07-26 22:18:38 railMatrix: processing regions 1 to 22950</code></pre>
+<pre><code>## 2020-07-26 22:18:38 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931819.bw</code></pre>
+<pre><code>## 2020-07-26 22:18:41 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931818.bw</code></pre>
+<pre><code>## 2020-07-26 22:18:44 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931817.bw</code></pre>
+<pre><code>## 2020-07-26 22:18:46 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931816.bw</code></pre>
+<pre><code>## 2020-07-26 22:18:49 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931815.bw</code></pre>
+<pre><code>## 2020-07-26 22:18:52 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931814.bw</code></pre>
+<pre><code>## 2020-07-26 22:18:55 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931813.bw</code></pre>
+<pre><code>## 2020-07-26 22:18:58 railMatrix: processing file /usr/local/lib/R/host-site-library/recountWorkshop2020/extdata/SRP056604/bw/SRR1931812.bw</code></pre>
 <pre><code>##    user  system elapsed 
-##  22.521   1.459  25.031</code></pre>
+##  21.439   1.431  23.715</code></pre>
 <div class="sourceCode" id="cb193"><pre class="downlit">
 <span class="co">## Use the expanded metadata we built for the gene model</span>
 <span class="fu">colData</span>(<span class="kw">rse_er</span>) <span class="op">&lt;-</span> <span class="fu">colData</span>(<span class="kw">rse_gene_scaled</span>)
@@ -1583,7 +1583,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
     filetype = <span class="st">"TxDb"</span>
 )[[<span class="fl">1</span>]]
 </pre></div>
-<pre><code>## using temporary cache /tmp/RtmpGlxizL/BiocFileCache</code></pre>
+<pre><code>## using temporary cache /tmp/RtmpgqyKjq/BiocFileCache</code></pre>
 <pre><code>## snapshotDate(): 2020-07-20</code></pre>
 <pre><code>## downloading 1 resources</code></pre>
 <pre><code>## retrieving 1 resource</code></pre>
@@ -1648,8 +1648,8 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
     <span class="kw">gs_gencode_v25_hg38</span><span class="op">$</span><span class="kw">fullGenome</span>
 )
 </pre></div>
-<pre><code>## 2020-07-26 21:57:01 annotateRegions: counting</code></pre>
-<pre><code>## 2020-07-26 21:57:02 annotateRegions: annotating</code></pre>
+<pre><code>## 2020-07-26 22:19:47 annotateRegions: counting</code></pre>
+<pre><code>## 2020-07-26 22:19:48 annotateRegions: annotating</code></pre>
 <p>We can finally use <code><a href="https://rdrr.io/pkg/derfinderPlot/man/plotRegionCoverage.html">plotRegionCoverage()</a></code> to visualize the top 10 regions coloring by whether they are LOAD or control samples. Known exons are shown in dark blue, introns in light blue.</p>
 <div class="sourceCode" id="cb246"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/leekgroup/derfinderPlot">"derfinderPlot"</a></span>)
@@ -1685,7 +1685,7 @@ Uses of recount-brain and its relationship with recount2 . recount-brain facilit
 <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/proc.time.html">proc.time</a></span>()[<span class="fl">3</span>] <span class="op">/</span> <span class="fl">60</span>, <span class="fl">1</span>)
 </pre></div>
 <pre><code>## elapsed 
-##     7.1</code></pre>
+##     6.9</code></pre>
 <div class="sourceCode" id="cb251"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(width = <span class="fl">100</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st"><a href="https://github.com/r-lib/sessioninfo#readme">"sessioninfo"</a></span>)
