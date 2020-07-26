@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# recountWorkshop2020
+# Human RNA-seq data from recount2 and related packages
 
 <!-- badges: start -->
 
@@ -13,94 +13,9 @@ status](http://bioconductor.org/shields/build/release/workflows/recountWorkflow.
 status](https://github.com/LieberInstitute/recountWorkshop2020/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/recountWorkshop2020/actions)
 <!-- badges: end -->
 
-The goal of `recountWorkshop2020` is to …
-
-## Installation instructions
-
-Get the latest stable `R` release from
-[CRAN](http://cran.r-project.org/). Then install `recountWorkshop2020`
-using from [GitHub](https://github.com/) with the following code:
-
-``` r
-if (!requireNamespace("BiocManager", quietly = TRUE)) {
-    install.packages("BiocManager")
-}
-
-BiocManager::install("LieberInstitute/recountWorkshop2020")
-```
-
-## Citation
-
-Below is the citation output from using `citation('recount` in R. Please
-run this yourself to check for any updates on how to cite **recount**.
-
-``` r
-print(citation('recount')[2], bibtex = TRUE)
-#> 
-#> Collado-Torres L, Nellore A, Jaffe AE (2017). "recount workflow:
-#> Accessing over 70,000 human RNA-seq samples with Bioconductor [version
-#> 1; referees: 1 approved, 2 approved with reservations]."
-#> _F1000Research_. doi: 10.12688/f1000research.12223.1 (URL:
-#> https://doi.org/10.12688/f1000research.12223.1), <URL:
-#> https://f1000research.com/articles/6-1558/v1>.
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Article{,
-#>     title = {recount workflow: Accessing over 70,000 human RNA-seq samples with Bioconductor [version 1; referees: 1 approved, 2 approved with reservations]},
-#>     author = {Leonardo Collado-Torres and Abhinav Nellore and Andrew E. Jaffe},
-#>     year = {2017},
-#>     journal = {F1000Research},
-#>     doi = {10.12688/f1000research.12223.1},
-#>     url = {https://f1000research.com/articles/6-1558/v1},
-#>   }
-```
-
-Please note that the `recount` was only made possible thanks to many
-other R and bioinformatics software authors, which are cited either in
-the vignettes and/or the paper(s) describing this package.
-
-## Code of Conduct
-
-Please note that the `recountWorkshop2020` project is released with a
-[Contributor Code of
-Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
-
-## Development tools
-
-  - Continuous code testing is possible thanks to [GitHub
-    actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
-    through *[usethis](https://CRAN.R-project.org/package=usethis)*,
-    *[remotes](https://CRAN.R-project.org/package=remotes)*,
-    *[sysreqs](https://github.com/r-hub/sysreqs)* and
-    *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
-    customized to use [Bioconductor’s docker
-    containers](https://www.bioconductor.org/help/docker/) and
-    *[BiocCheck](https://bioconductor.org/packages/3.11/BiocCheck)*.
-  - Code coverage assessment is possible thanks to
-    [codecov](https://codecov.io/gh) and
-    *[covr](https://CRAN.R-project.org/package=covr)*.
-  - The [documentation
-    website](http://LieberInstitute.github.io/recountWorkshop2020) is
-    automatically updated thanks to
-    *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
-  - The code is styled automatically thanks to
-    *[styler](https://CRAN.R-project.org/package=styler)*.
-  - The documentation is formatted thanks to
-    *[devtools](https://CRAN.R-project.org/package=devtools)* and
-    *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
-
-For more details, check the `dev` directory.
-
-This package was developed using
-*[biocthis](https://github.com/lcolladotor/biocthis)*.
-
-# Human RNA-seq data from recount2 and related packages
-
 ## Instructor
 
-Leonardo Collado-Torres
+[Leonardo Collado-Torres](http://lcolladotor.github.io/)
 
   - [GitHub](https://github.com/lcolladotor)
   - [Twitter](https://twitter.com/fellgernon)
@@ -211,3 +126,84 @@ Total: a 50-55 minute session.
     recount2
   - Locate resources that enhance recount2 such as recount-brain,
     `derfinder`, and `GenomicState`
+
+## Installation instructions
+
+Get the latest stable `R` release from
+[CRAN](http://cran.r-project.org/). Then install `recountWorkshop2020`
+using from [GitHub](https://github.com/) with the following code:
+
+``` r
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+
+BiocManager::install("LieberInstitute/recountWorkshop2020")
+```
+
+## Citation
+
+Below is the citation output from using `citation('recount` in R. Please
+run this yourself to check for any updates on how to cite **recount**.
+
+``` r
+print(citation('recount')[2], bibtex = TRUE)
+#> 
+#> Collado-Torres L, Nellore A, Jaffe AE (2017). "recount workflow:
+#> Accessing over 70,000 human RNA-seq samples with Bioconductor [version
+#> 1; referees: 1 approved, 2 approved with reservations]."
+#> _F1000Research_. doi: 10.12688/f1000research.12223.1 (URL:
+#> https://doi.org/10.12688/f1000research.12223.1), <URL:
+#> https://f1000research.com/articles/6-1558/v1>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Article{,
+#>     title = {recount workflow: Accessing over 70,000 human RNA-seq samples with Bioconductor [version 1; referees: 1 approved, 2 approved with reservations]},
+#>     author = {Leonardo Collado-Torres and Abhinav Nellore and Andrew E. Jaffe},
+#>     year = {2017},
+#>     journal = {F1000Research},
+#>     doi = {10.12688/f1000research.12223.1},
+#>     url = {https://f1000research.com/articles/6-1558/v1},
+#>   }
+```
+
+Please note that the `recount` was only made possible thanks to many
+other R and bioinformatics software authors, which are cited either in
+the vignettes and/or the paper(s) describing this package.
+
+## Code of Conduct
+
+Please note that the `recountWorkshop2020` project is released with a
+[Contributor Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+## Development tools
+
+  - Continuous code testing is possible thanks to [GitHub
+    actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
+    through *[usethis](https://CRAN.R-project.org/package=usethis)*,
+    *[remotes](https://CRAN.R-project.org/package=remotes)*,
+    *[sysreqs](https://github.com/r-hub/sysreqs)* and
+    *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
+    customized to use [Bioconductor’s docker
+    containers](https://www.bioconductor.org/help/docker/) and
+    *[BiocCheck](https://bioconductor.org/packages/3.11/BiocCheck)*.
+  - Code coverage assessment is possible thanks to
+    [codecov](https://codecov.io/gh) and
+    *[covr](https://CRAN.R-project.org/package=covr)*.
+  - The [documentation
+    website](http://LieberInstitute.github.io/recountWorkshop2020) is
+    automatically updated thanks to
+    *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
+  - The code is styled automatically thanks to
+    *[styler](https://CRAN.R-project.org/package=styler)*.
+  - The documentation is formatted thanks to
+    *[devtools](https://CRAN.R-project.org/package=devtools)* and
+    *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
+
+For more details, check the `dev` directory.
+
+This package was developed using
+*[biocthis](https://github.com/lcolladotor/biocthis)*.

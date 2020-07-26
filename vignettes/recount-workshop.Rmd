@@ -39,7 +39,7 @@ This workshop is an updated version of the `recountWorkshop` from BioC2017 and B
 
 ## Instructor
 
-Leonardo Collado-Torres
+[Leonardo Collado-Torres](http://lcolladotor.github.io/)
 
 * [GitHub](https://github.com/lcolladotor)
 * [Twitter](https://twitter.com/fellgernon)
