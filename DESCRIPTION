@@ -19,7 +19,7 @@ Description: The recount2 project re-processed RNA sequencing (RNA-seq) data on
     session where you will dive into recount and related packages along the
     lines of the recount workflow.
 License: Artistic-2.0
-URL: https://github.com/LieberInstitute/recountWorkshop2020
+URL: https://lieberinstitute.github.io/recountWorkshop2020/
 BugReports: 
     https://support.bioconductor.org/t/recountWorkshop2020
 Depends: R (>= 4.0.0)
