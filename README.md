@@ -10,7 +10,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![BioC
 status](http://bioconductor.org/shields/build/release/workflows/recountWorkflow.svg)](http://bioconductor.org/checkResults/release/workflows-LATEST/recountWorkflow/)
 [![R build
-status](https://github.com/LieberInstitute/recountWorkshop2020/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/recountWorkshop2020/actions)
+status](https://github.com/LieberInstitute/recountWorkshop2020/actions/workflows/check-bioc.yml/badge.svg)](https://github.com/LieberInstitute/recountWorkshop2020/actions/workflows/check-bioc.yml)
 <!-- badges: end -->
 
 <img src="https://raw.githubusercontent.com/LieberInstitute/recountWorkshop2020/master/inst/vignettes/Figure1.png" width="800px" />
